@@ -1,1 +1,61 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CST444 Soft Computing learning portal">
+<title>CST444 | Soft Computing</title>
+<style>
+:root{--primary:#2563eb;--dark:#0f172a;--text:#1e293b;--muted:#64748b;--bg:#f8fafc;--card:#fff;--border:#e2e8f0}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:"Segoe UI",Arial,sans-serif;color:var(--text);background:var(--bg);line-height:1.6}a{text-decoration:none;color:inherit}
+.navbar{position:sticky;top:0;z-index:10;background:rgba(15,23,42,.97);color:#fff;padding:14px 6%;display:flex;justify-content:space-between;align-items:center;gap:20px}.brand{font-weight:800}.brand span{color:#60a5fa}.nav-links{display:flex;flex-wrap:wrap;gap:18px;list-style:none;font-size:.92rem}.nav-links a{color:#e2e8f0}.nav-links a:hover{color:#93c5fd}
+.hero{min-height:500px;display:flex;align-items:center;padding:70px 6%;color:#fff;background:radial-gradient(circle at 80% 20%,rgba(96,165,250,.35),transparent 28%),radial-gradient(circle at 15% 80%,rgba(124,58,237,.28),transparent 30%),linear-gradient(135deg,#0f172a,#1e3a8a 55%,#312e81)}.hero-content{max-width:900px}.badge{display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;background:rgba(255,255,255,.08);font-size:.88rem;margin-bottom:18px}.hero h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.05;margin-bottom:18px}.hero h1 span{color:#93c5fd}.hero p{max-width:760px;font-size:1.12rem;color:#dbeafe;margin-bottom:28px}.hero-buttons{display:flex;flex-wrap:wrap;gap:12px}.btn{display:inline-block;padding:11px 18px;border-radius:10px;font-weight:700}.btn-primary{background:#fff;color:#1e40af}.btn-outline{border:1px solid rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.06)}
+.section{padding:65px 6%}.section-title{text-align:center;margin-bottom:38px}.section-title h2{font-size:2rem;color:var(--dark);margin-bottom:8px}.section-title p{color:var(--muted)}.info-grid,.module-grid,.resource-grid{display:grid;gap:20px}.info-grid{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}.info-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;text-align:center;box-shadow:0 8px 25px rgba(15,23,42,.05)}.number{font-size:1.7rem;font-weight:800;color:var(--primary)}.info-card p{color:var(--muted);font-size:.92rem}
+.module-grid{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}.module-card{background:#fff;border:1px solid var(--border);border-radius:18px;padding:25px;display:flex;flex-direction:column;min-height:275px;transition:.2s}.module-card:hover{transform:translateY(-5px);box-shadow:0 15px 35px rgba(15,23,42,.1)}.module-number{color:var(--primary);font-size:.82rem;font-weight:800;text-transform:uppercase;letter-spacing:1px}.module-card h3{margin:8px 0 10px;color:var(--dark)}.module-card p{color:var(--muted);font-size:.93rem}.topics{margin:14px 0;padding-left:18px;color:#475569;font-size:.88rem;flex:1}.module-btn{display:block;background:#eff6ff;color:#1e40af;padding:9px 13px;border-radius:8px;font-weight:700;text-align:center}
+.co-section{background:#eef4ff}.co-list{max-width:950px;margin:auto;display:grid;gap:14px}.co-item{background:#fff;border:1px solid #dbeafe;border-radius:12px;padding:17px 20px;display:grid;grid-template-columns:70px 1fr;gap:15px}.co-code{font-weight:800;color:#1e40af}.co-item p{color:#475569}
+.resource-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.resource-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center}.resource-icon{font-size:2rem;margin-bottom:8px}.resource-card h3{margin-bottom:7px}.resource-card p{color:var(--muted);font-size:.9rem;margin-bottom:15px}.resource-link{color:var(--primary);font-weight:700}.books{max-width:900px;margin:auto;display:grid;gap:14px}.book{background:#fff;border:1px solid var(--border);border-radius:12px;padding:17px 20px}.book p{color:var(--muted);font-size:.92rem}footer{background:var(--dark);color:#cbd5e1;padding:35px 6%;text-align:center}footer strong{color:#fff}.footer-small{margin-top:7px;font-size:.85rem;color:#94a3b8}
+@media(max-width:700px){.navbar{align-items:flex-start;flex-direction:column}.nav-links{gap:10px 14px}.hero{padding-top:55px;padding-bottom:55px}.co-item{grid-template-columns:1fr;gap:4px}}
+</style>
+</head>
+<body>
+<header class="navbar">
+  <div class="brand">CST444 <span>Soft Computing</span></div>
+  <nav><ul class="nav-links"><li><a href="#home">Home</a></li><li><a href="#modules">Modules</a></li><li><a href="#outcomes">COs</a></li><li><a href="#resources">Resources</a></li><li><a href="#books">Books</a></li></ul></nav>
+</header>
+<section class="hero" id="home"><div class="hero-content">
+  <div class="badge">PEC • 2019 Scheme • Semester VIII</div>
+  <h1>Learn <span>Soft Computing</span></h1>
+  <p>A structured learning portal for CST444 Soft Computing covering Artificial Neural Networks, Fuzzy Logic, Genetic Algorithms, Multi-Objective Optimization and Hybrid Systems.</p>
+  <div class="hero-buttons"><a class="btn btn-primary" href="#modules">Explore Modules →</a><a class="btn btn-outline" href="assets/pdfs/SoftComputing_Syllabus.pdf" target="_blank">View Syllabus</a></div>
+</div></section>
+<section class="section"><div class="section-title"><h2>Course at a Glance</h2><p>Course information from the CST444 syllabus</p></div><div class="info-grid">
+<div class="info-card"><div class="number">CST444</div><p>Course Code</p></div><div class="info-card"><div class="number">3</div><p>Credits</p></div><div class="info-card"><div class="number">35</div><p>Lecture Hours</p></div><div class="info-card"><div class="number">5</div><p>Modules</p></div><div class="info-card"><div class="number">100</div><p>ESE Marks</p></div><div class="info-card"><div class="number">50</div><p>CIE Marks</p></div>
+</div></section>
+<section class="section" id="modules"><div class="section-title"><h2>Course Modules</h2><p>35 lecture hours organised across five modules</p></div><div class="module-grid">
+<article class="module-card"><div class="module-number">Module 01 • 6 Hours</div><h3>Introduction to Soft Computing &amp; ANN</h3><p>Foundations of soft computing and basic artificial neural network models.</p><ul class="topics"><li>Hard vs Soft Computing</li><li>Biological vs Artificial Neurons</li><li>Activation Functions</li><li>McCulloch–Pitts Neuron</li><li>Hebb Network</li></ul><a class="module-btn" href="modules/module1.html">Open Module 1 →</a></article>
+<article class="module-card"><div class="module-number">Module 02 • 7 Hours</div><h3>Supervised Learning Network</h3><p>Supervised neural network models, training algorithms and practical problems.</p><ul class="topics"><li>Perceptron Networks</li><li>Learning Rule</li><li>Adaline</li><li>Training &amp; Testing</li><li>Back Propagation</li></ul><a class="module-btn" href="modules/module2.html">Open Module 2 →</a></article>
+<article class="module-card"><div class="module-number">Module 03 • 8 Hours</div><h3>Fuzzy Logic &amp; Defuzzification</h3><p>Fuzzy sets, membership functions, relations, propositions and defuzzification.</p><ul class="topics"><li>Fuzzy Sets &amp; Operations</li><li>Membership Functions</li><li>Fuzzy Relations</li><li>Fuzzy Propositions</li><li>Lambda Cuts &amp; Defuzzification</li></ul><a class="module-btn" href="modules/module3.html">Open Module 3 →</a></article>
+<article class="module-card"><div class="module-number">Module 04 • 6 Hours</div><h3>Fuzzy Inference System &amp; GA</h3><p>Fuzzy inference systems and the fundamental operators of genetic algorithms.</p><ul class="topics"><li>Mamdani Type</li><li>Sugeno Type</li><li>Fuzzy Logic Controller</li><li>GA Coding &amp; Selection</li><li>Crossover &amp; Mutation</li></ul><a class="module-btn" href="modules/module4.html">Open Module 4 →</a></article>
+<article class="module-card"><div class="module-number">Module 05 • 8 Hours</div><h3>Multi-Objective Optimization &amp; Hybrid Systems</h3><p>Multi-objective optimisation, Pareto optimality and hybrid soft computing approaches.</p><ul class="topics"><li>Linear &amp; Nonlinear MOOP</li><li>Convex &amp; Non-convex MOOP</li><li>Dominance</li><li>Pareto Optimality</li><li>Neuro-Fuzzy &amp; Genetic-Neuro Systems</li></ul><a class="module-btn" href="modules/module5.html">Open Module 5 →</a></article>
+</div></section>
+<section class="section co-section" id="outcomes"><div class="section-title"><h2>Course Outcomes</h2><p>Expected learning outcomes for CST444</p></div><div class="co-list">
+<div class="co-item"><div class="co-code">CO1</div><p>Describe soft computing techniques and the basic models of Artificial Neural Network.</p></div><div class="co-item"><div class="co-code">CO2</div><p>Solve practical problems using neural networks.</p></div><div class="co-item"><div class="co-code">CO3</div><p>Illustrate the operations, model and applications of fuzzy logic.</p></div><div class="co-item"><div class="co-code">CO4</div><p>Illustrate the concepts of Genetic Algorithm.</p></div><div class="co-item"><div class="co-code">CO5</div><p>Describe the concepts of multi-objective optimization models and the need for using hybrid soft computing approaches.</p></div>
+</div></section>
+<section class="section" id="resources"><div class="section-title"><h2>Learning Resources</h2><p>Learning, practice and examination preparation</p></div><div class="resource-grid">
+<div class="resource-card"><div class="resource-icon">📖</div><h3>Lecture Notes</h3><p>Module-wise notes and explanations.</p><a class="resource-link" href="resources/notes.html">Open Notes →</a></div>
+<div class="resource-card"><div class="resource-icon">📝</div><h3>Question Bank</h3><p>Questions organised by modules and course outcomes.</p><a class="resource-link" href="question-bank.html">Open Questions →</a></div>
+<div class="resource-card"><div class="resource-icon">🎯</div><h3>Assignments</h3><p>Application-oriented practice activities.</p><a class="resource-link" href="assignments.html">View Assignments →</a></div>
+<div class="resource-card"><div class="resource-icon">🧠</div><h3>Module Quizzes</h3><p>Test your understanding after each module.</p><a class="resource-link" href="quizzes.html">Take a Quiz →</a></div>
+<div class="resource-card"><div class="resource-icon">📄</div><h3>Model Question Paper</h3><p>Practice with the university model paper.</p><a class="resource-link" href="assets/pdfs/CST444_Model_Question_Paper.pdf" target="_blank">Open PDF →</a></div>
+<div class="resource-card"><div class="resource-icon">📚</div><h3>Study Material</h3><p>Additional PDFs and supporting learning material.</p><a class="resource-link" href="resources.html">Browse Resources →</a></div>
+</div></section>
+<section class="section" id="books"><div class="section-title"><h2>Text Books &amp; References</h2><p>Books prescribed in the CST444 syllabus</p></div><div class="books">
+<div class="book"><strong>Text Book 1</strong><p>S. N. Sivanandam and S. N. Deepa, <em>Principles of Soft Computing</em>, 2nd Edition, John Wiley &amp; Sons.</p></div>
+<div class="book"><strong>Text Book 2</strong><p>Kalyanmoy Deb, <em>Multi-objective Optimization using Evolutionary Algorithms</em>, 1st Edition, John Wiley &amp; Sons.</p></div>
+<div class="book"><strong>Reference</strong><p>Timothy J. Ross, <em>Fuzzy Logic with Engineering Applications</em>, John Wiley &amp; Sons, 2016.</p></div>
+<div class="book"><strong>Reference</strong><p>T. S. Rajasekaran and G. A. Vijayalakshmi Pai, <em>Neural Networks, Fuzzy Logic &amp; Genetic Algorithms: Synthesis and Applications</em>, Prentice-Hall India.</p></div>
+<div class="book"><strong>Reference</strong><p>Simon Haykin, <em>Neural Networks – A Comprehensive Foundation</em>, 2/e, Pearson Education.</p></div>
+<div class="book"><strong>Reference</strong><p>Zimmermann H. J., <em>Fuzzy Set Theory &amp; Its Applications</em>, Allied Publishers Ltd.</p></div>
+</div></section>
+<footer><p><strong>CST444 • Soft Computing</strong></p><p>Computer Science and Engineering</p><p class="footer-small">Academic learning portal • 2019 Scheme</p></footer>
+</body></html>
