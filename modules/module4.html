@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 4 | Fuzzy Inference System & Genetic Algorithm | CST444 Soft Computing</title>
+<style>
+:root{--primary:#2563eb;--dark:#0f172a;--bg:#f8fafc;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;--green:#16a34a}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+nav{position:sticky;top:0;z-index:1000;background:rgba(15,23,42,.96);padding:14px 6%;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 20px #0f172a22}
+.brand{color:#fff;font-weight:800}.links a{color:#cbd5e1;text-decoration:none;margin-left:20px;font-size:.92rem;font-weight:600}.links a:hover{color:#fff}
+.hero{padding:80px 7%;background:linear-gradient(135deg,#eff6ff,#ecfeff);border-bottom:1px solid var(--border)}
+.container{width:min(1120px,90%);margin:auto}
+.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;padding:7px 14px;border-radius:999px;font-size:.82rem;font-weight:800;margin-bottom:18px}
+h1{font-size:clamp(2.1rem,5vw,4rem);line-height:1.1;color:var(--dark);max-width:950px}
+.hero p{max-width:850px;color:#475569;font-size:1.08rem;margin-top:20px}
+.faculty{margin-top:28px;padding:18px 20px;border-left:4px solid var(--primary);background:#fff;border-radius:12px;max-width:780px;box-shadow:0 8px 30px #0f172a0f}
+.faculty strong{color:var(--dark)}
+section{padding:65px 0}.section-title{text-align:center;margin-bottom:35px}.section-title h2{font-size:2rem;color:var(--dark)}.section-title p{color:var(--muted);margin-top:7px}
+.overview{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}.stat{background:#fff;border:1px solid var(--border);padding:24px;border-radius:16px;text-align:center;box-shadow:0 8px 25px #0f172a0d}.num{font-size:2rem;font-weight:850;color:var(--primary)}.stat span{display:block;color:var(--muted);font-size:.9rem}
+.topics{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}.topic{background:#fff;border:1px solid var(--border);border-radius:18px;padding:25px;transition:.25s;box-shadow:0 8px 25px #0f172a0b}.topic:hover{transform:translateY(-5px);box-shadow:0 16px 35px #2563eb1f}
+.topic-number{width:42px;height:42px;border-radius:12px;background:#dbeafe;color:#1d4ed8;display:flex;align-items:center;justify-content:center;font-weight:900;margin-bottom:15px}.topic h3{font-size:1.12rem;color:var(--dark);margin-bottom:8px}.topic p{color:var(--muted);font-size:.94rem}.hours{display:inline-block;margin-top:14px;color:var(--green);font-weight:800;font-size:.86rem}
+.flow{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;align-items:center}.flow-item{background:#0f172a;color:#fff;border-radius:14px;padding:15px 18px;font-weight:750;text-align:center;min-width:145px}.arrow{font-size:1.5rem;color:var(--primary);font-weight:900}
+.focus{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}.focus-card{background:#fff;border:1px solid var(--border);border-radius:16px;padding:25px}.focus-card h3{color:#1e40af;margin-bottom:10px}.focus-card ul{padding-left:20px;color:#475569}.focus-card li{margin:7px 0}
+.assessment{background:#0f172a;color:#e2e8f0;border-radius:22px;padding:35px}.assessment h2{color:#fff;margin-bottom:10px}.assessment p{color:#cbd5e1;margin-bottom:20px}.question{background:#ffffff12;border:1px solid #ffffff1a;padding:18px;border-radius:13px;margin:12px 0}.question b{color:#67e8f9}
+.resources{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}.resource{background:#fff;border:1px solid var(--border);border-radius:16px;padding:22px;text-decoration:none;color:inherit;display:block}.resource:hover{border-color:#93c5fd;background:#eff6ff}.resource h3{color:#1e40af;margin-bottom:6px}.resource p{color:var(--muted);font-size:.9rem}
+.back{display:inline-block;margin-top:20px;text-decoration:none;background:var(--primary);color:#fff;padding:12px 18px;border-radius:10px;font-weight:750}
+footer{background:#020617;color:#94a3b8;text-align:center;padding:30px 20px;font-size:.9rem}footer strong{color:#fff}
+@media(max-width:700px){nav{padding:13px 4%}.links{display:none}.hero{padding:60px 6%}section{padding:45px 0}.arrow{display:none}}
+</style>
+</head>
+<body>
+<nav>
+<div class="brand">CST444 • SOFT COMPUTING</div>
+<div class="links">
+<a href="../index.html">Home</a><a href="module1.html">Module 1</a><a href="module2.html">Module 2</a><a href="module3.html">Module 3</a><a href="module4.html">Module 4</a><a href="module5.html">Module 5</a>
+</div>
+</nav>
+
+<header class="hero">
+<div class="container">
+<span class="badge">MODULE 4 • FUZZY INFERENCE SYSTEM &amp; GENETIC ALGORITHM</span>
+<h1>Fuzzy Inference Systems &amp; Genetic Algorithms</h1>
+<p>This module covers Mamdani and Sugeno fuzzy inference systems, fuzzy logic controllers, and the fundamental concepts and operators of genetic algorithms, including coding, selection, crossover, mutation and stopping conditions.</p>
+<div class="faculty"><strong>Ms. Arsha J K</strong><br>Assistant Professor<br>Department of Computer Science &amp; Engineering<br>Viswajyothi College of Engineering &amp; Technology</div>
+</div>
+</header>
+
+<section><div class="container">
+<div class="section-title"><h2>Module Overview</h2><p>Module 4 is planned for 6 teaching hours.</p></div>
+<div class="overview">
+<div class="stat"><div class="num">6</div><span>Teaching Hours</span></div>
+<div class="stat"><div class="num">6</div><span>Planned Sessions</span></div>
+<div class="stat"><div class="num">2</div><span>Major Areas</span></div>
+<div class="stat"><div class="num">CO3 / CO4</div><span>Related Course Outcomes</span></div>
+</div>
+</div></section>
+
+<section><div class="container">
+<div class="section-title"><h2>Module 4 Topics</h2><p>Teaching sequence from the prescribed CST444 teaching plan.</p></div>
+<div class="topics">
+<article class="topic"><div class="topic-number">4.1</div><h3>Fuzzy Inference System – Mamdani</h3><p>Study the Mamdani type of Fuzzy Inference System.</p><span class="hours">1 Hour</span></article>
+<article class="topic"><div class="topic-number">4.2</div><h3>Fuzzy Inference System – Sugeno</h3><p>Study the Sugeno type of Fuzzy Inference System.</p><span class="hours">1 Hour</span></article>
+<article class="topic"><div class="topic-number">4.3</div><h3>Fuzzy Logic Controller</h3><p>Understand the role and structure of a Fuzzy Logic Controller.</p><span class="hours">1 Hour</span></article>
+<article class="topic"><div class="topic-number">4.4</div><h3>Genetic Algorithm &amp; Coding</h3><p>Introduction to genetic algorithms and coding as a genetic algorithm operator.</p><span class="hours">1 Hour</span></article>
+<article class="topic"><div class="topic-number">4.5</div><h3>Selection &amp; Crossover</h3><p>Study selection and crossover operators used in genetic algorithms.</p><span class="hours">1 Hour</span></article>
+<article class="topic"><div class="topic-number">4.6</div><h3>Mutation &amp; Stopping Condition</h3><p>Study mutation and stopping conditions for genetic algorithms.</p><span class="hours">1 Hour</span></article>
+</div>
+</div></section>
+
+<section><div class="container">
+<div class="section-title"><h2>Learning Structure</h2><p>Progress from fuzzy inference to evolutionary search.</p></div>
+<div class="flow">
+<div class="flow-item">Mamdani<br><small>FIS</small></div><div class="arrow">→</div>
+<div class="flow-item">Sugeno<br><small>FIS</small></div><div class="arrow">→</div>
+<div class="flow-item">Fuzzy Logic<br><small>Controller</small></div><div class="arrow">→</div>
+<div class="flow-item">Genetic<br><small>Algorithm</small></div><div class="arrow">→</div>
+<div class="flow-item">Coding</div><div class="arrow">→</div>
+<div class="flow-item">Selection</div><div class="arrow">→</div>
+<div class="flow-item">Crossover</div><div class="arrow">→</div>
+<div class="flow-item">Mutation</div>
+</div>
+</div></section>
+
+<section><div class="container">
+<div class="section-title"><h2>Module Learning Focus</h2><p>Key areas for classroom learning and examination preparation.</p></div>
+<div class="focus">
+<div class="focus-card"><h3>Fuzzy Inference Systems</h3><ul><li>Mamdani type</li><li>Sugeno type</li><li>Comparison of the two types</li><li>Fuzzy inference process</li></ul></div>
+<div class="focus-card"><h3>Fuzzy Logic Controller</h3><ul><li>Concept of fuzzy control</li><li>Role of fuzzy rules</li><li>Fuzzy-controller based applications</li></ul></div>
+<div class="focus-card"><h3>Genetic Algorithms</h3><ul><li>Basic concepts</li><li>Coding</li><li>Selection</li><li>Crossover</li><li>Mutation</li><li>Stopping condition</li></ul></div>
+</div>
+</div></section>
+
+<section><div class="container">
+<div class="assessment">
+<h2>Assessment &amp; Practice Questions</h2>
+<p>Questions aligned with the CST444 course-level assessment and model-question material.</p>
+<div class="question"><b>Stochastic Universal Sampling:</b> Explain Stochastic Universal Sampling with a suitable example.</div>
+<div class="question"><b>Mutation:</b> Explain any two mutation methods.</div>
+<div class="question"><b>Crossover:</b> Illustrate the various types of crossover with suitable examples.</div>
+<div class="question"><b>Genetic Algorithm Problem:</b> Using a genetic algorithm with Roulette Wheel selection, maximize <strong>f(x) = x²</strong> over {0, 1, 2, ..., 31} for initial x values (13, 24, 8, 19). Show one crossover and mutation.</div>
+<div class="question"><b>Fuzzy Inference:</b> Explain a Mamdani fuzzy controller for a suitable application.</div>
+</div>
+</div></section>
+
+<section><div class="container">
+<div class="section-title"><h2>Resources</h2><p>Add your Module 4 lecture materials here.</p></div>
+<div class="resources">
+<a class="resource" href="#"><h3>📘 Lecture Notes</h3><p>Module 4 notes on Fuzzy Inference Systems and Genetic Algorithms.</p></a>
+<a class="resource" href="#"><h3>🎞️ PPT / Slides</h3><p>Classroom presentation materials for the six sessions.</p></a>
+<a class="resource" href="#"><h3>🧬 GA Problem Set</h3><p>Practice problems involving coding, selection, crossover and mutation.</p></a>
+<a class="resource" href="#"><h3>📝 Question Bank</h3><p>Module 4 questions for internal and university examination preparation.</p></a>
+</div>
+<a class="back" href="../index.html">← Back to CST444 Home</a>
+</div></section>
+
+<footer><strong>CST444 Soft Computing</strong><br>Department of Computer Science &amp; Engineering<br>Viswajyothi College of Engineering &amp; Technology<br><br>Designed &amp; Developed by <strong>Ms. Arsha J K</strong></footer>
+</body>
+</html>
