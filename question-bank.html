@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="CST444 Soft Computing module-wise question bank for KTU B.Tech 2019 Scheme. Includes Part A, Part B and syllabus model question paper.">
+<meta name="keywords" content="CST444, Soft Computing, KTU, question bank, ANN, fuzzy logic, genetic algorithm">
+<title>CST444 | Soft Computing Question Bank</title>
+<style>
+:root{--navy:#101b35;--navy2:#172747;--blue:#2563eb;--cyan:#38bdf8;--ink:#172033;--muted:#64748b;--line:#e2e8f0;--paper:#f5f7fb;--white:#fff;--gold:#fbbf24}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65}
+nav{position:sticky;top:0;z-index:20;background:rgba(16,27,53,.97);backdrop-filter:blur(12px);color:#fff;box-shadow:0 4px 20px #0f172a22}
+.nav-inner{max-width:1200px;margin:auto;padding:0 22px;min-height:66px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:800;letter-spacing:.04em;color:#fff;text-decoration:none} .brand span{color:var(--cyan)}
+.nav-links{display:flex;gap:20px;align-items:center;flex-wrap:wrap} .nav-links a{color:#dbeafe;text-decoration:none;font-size:.9rem} .nav-links a:hover{color:#fff}
+.hero{background:radial-gradient(circle at 85% 15%,#2563eb55,transparent 30%),linear-gradient(120deg,var(--navy),#203d70);color:white;padding:58px 22px 46px}
+.hero-inner{max-width:1200px;margin:auto;display:grid;grid-template-columns:1.5fr .8fr;gap:36px;align-items:center}
+.kicker{color:#7dd3fc;font-weight:800;letter-spacing:.16em;font-size:.78rem;text-transform:uppercase}
+h1{font-size:clamp(2.1rem,5vw,3.7rem);line-height:1.1;margin:12px 0 16px;letter-spacing:-.04em}
+.hero p{max-width:700px;color:#dbeafe;font-size:1.06rem}
+.faculty{border:1px solid #ffffff33;background:#ffffff10;border-radius:18px;padding:22px}
+.faculty strong{display:block;font-size:1.1rem} .faculty small{color:#bfdbfe}
+.stats{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px} .stat{border:1px solid #ffffff2c;background:#ffffff0c;border-radius:12px;padding:10px 15px;min-width:110px} .stat b{display:block;font-size:1.25rem} .stat span{font-size:.76rem;color:#cbd5e1}
+main{max-width:1200px;margin:30px auto;padding:0 22px 60px}
+.toolbar{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;box-shadow:0 8px 24px #0f172a08}
+.search-wrap{position:relative} .search-wrap input{width:100%;padding:14px 16px 14px 44px;border:1px solid #cbd5e1;border-radius:11px;font-size:1rem;outline:none} .search-wrap input:focus{border-color:var(--blue);box-shadow:0 0 0 3px #2563eb18}
+.search-icon{position:absolute;left:15px;top:12px;color:#64748b;font-size:1.2rem}
+.actions{display:flex;gap:8px;flex-wrap:wrap} button,.pill{border:0;border-radius:10px;padding:11px 14px;background:var(--navy2);color:#fff;font-weight:700;cursor:pointer} button.secondary{background:#eaf0fb;color:#19315b} button:hover{filter:brightness(1.08)}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 22px} .filter{background:#fff;border:1px solid var(--line);color:#334155;padding:9px 14px;border-radius:999px;font-weight:700;cursor:pointer} .filter.active{background:var(--blue);border-color:var(--blue);color:white}
+.info-strip{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin:12px 2px 20px}
+.module-panel,.model-paper{background:#fff;border:1px solid var(--line);border-radius:18px;margin:18px 0;padding:24px;box-shadow:0 8px 25px #0f172a08;scroll-margin-top:88px}
+.module-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start} .eyebrow{font-size:.75rem;font-weight:800;color:var(--blue);letter-spacing:.1em;text-transform:uppercase} h2{margin:6px 0 0;color:var(--navy);font-size:1.55rem;line-height:1.25} .co{white-space:nowrap;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:7px 12px;font-size:.8rem;font-weight:800}
+.coverage{background:#f8fafc;border-left:3px solid var(--cyan);padding:12px 15px;color:#475569;border-radius:0 10px 10px 0;font-size:.92rem;margin:18px 0}
+details{border:1px solid var(--line);border-radius:13px;margin-top:14px;overflow:hidden} summary{list-style:none;cursor:pointer;padding:15px 17px;background:#f8fafc;display:flex;justify-content:space-between;gap:15px;align-items:center;font-weight:800;color:#1e293b} summary::-webkit-details-marker{display:none} summary:after{content:"＋";color:var(--blue);font-size:1.2rem} details[open] summary:after{content:"−"} summary small{color:#64748b;font-weight:600;white-space:nowrap}
+.questions{padding:8px 22px 18px 54px;margin:0} .questions li{padding:8px 6px;border-bottom:1px solid #f1f5f9} .questions li:last-child{border-bottom:0} .qno{font-weight:800;color:var(--blue);margin-right:5px}
+.model-paper{border-top:5px solid var(--gold)} .model-paper h2{margin-bottom:8px} .model-meta{color:var(--muted);margin:0 0 18px} .model-group{padding:15px 0;border-top:1px solid var(--line)} .model-group h3{color:#1e3a8a;font-size:1.05rem} .model-group li{padding:6px 0} .or{display:inline-block;background:#fff7ed;color:#c2410c;border-radius:6px;padding:2px 8px;font-size:.75rem;font-weight:900;margin:5px 0}
+.empty{display:none;padding:30px;text-align:center;color:var(--muted);background:#fff;border-radius:12px}
+footer{background:var(--navy);color:#cbd5e1;padding:28px 22px;text-align:center;font-size:.88rem} footer strong{color:#fff}
+
+
+
+.pyq-section h2{margin:5px 0 8px}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width:760px){.hero-inner{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}.module-head{display:block}.co{display:inline-block;margin-top:12px}.nav-inner{align-items:flex-start;padding:14px 18px;flex-direction:column}.nav-links{gap:13px}summary{align-items:flex-start;flex-direction:column}summary small{white-space:normal}.module-panel,.model-paper{padding:17px}.questions{padding-left:35px}}
+@media print{nav,.toolbar,.filter-row,.actions,.hero .faculty{display:none!important}body{background:#fff}.hero{padding:22px;background:#fff;color:#111}.hero p,.kicker{color:#333}.module-panel,.model-paper{box-shadow:none;break-inside:avoid}details{break-inside:avoid}details:not([open]) .questions{display:block}footer{background:#fff;color:#333}}
+
+.pyq-archive{background:#fff;border:1px solid var(--line);border-radius:18px;margin:20px 0;padding:24px;box-shadow:0 8px 25px #0f172a08;scroll-margin-top:88px}
+.pyq-archive-head{display:flex;justify-content:space-between;align-items:flex-start;gap:15px;flex-wrap:wrap}
+.pyq-archive-head p{color:var(--muted);margin:8px 0 0;max-width:780px}
+.pyq-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px;margin-top:20px}
+.pyq-item{border:1px solid var(--line);border-radius:13px;padding:16px;background:#fff;display:flex;flex-direction:column;gap:7px}
+.pyq-item .session{font-weight:800;color:#172554;font-size:1rem}
+.pyq-item .meta{font-size:.82rem;color:#64748b;flex:1}
+.pyq-item a{display:inline-flex;align-items:center;justify-content:center;background:#172747;color:#fff;text-decoration:none;font-weight:750;padding:10px 13px;border-radius:9px;margin-top:8px}
+.pyq-item a:hover{background:#2563eb}
+.pyq-year{margin:20px 0 8px;color:#1e3a8a;font-size:1.05rem}
+
+</style>
+</head>
+<body>
+<nav><div class="nav-inner">
+<a class="brand" href="index.html">CST444 <span>· SOFT COMPUTING</span></a>
+<div class="nav-links">
+<a href="index.html">Home</a><a href="modules/module1.html">Modules</a><a href="#question-bank">Question Bank</a><a href="#previous-year-papers">Previous Year Papers</a><a href="#model-paper">Model Paper</a>
+</div></div></nav>
+<header class="hero"><div class="hero-inner">
+<div><div class="kicker">KTU B.Tech · 2019 Scheme · Semester VIII</div>
+<h1>Soft Computing<br>Question Bank</h1>
+<p>Module-wise university examination preparation covering short-answer, descriptive, numerical and diagram-based questions, along with the model question paper included in the syllabus.</p>
+<div class="stats"><div class="stat"><b>5</b><span>Modules</span></div><div class="stat"><b>165</b><span>Question bank items</span></div><div class="stat"><b>3 + 14</b><span>Marks pattern</span></div><div class="stat"><b>100</b><span>ESE marks</span></div></div></div>
+<aside class="faculty"><strong>Ms. Arsha J K</strong><small>Assistant Professor<br>Department of Computer Science & Engineering<br>Viswajyothi College of Engineering & Technology</small></aside>
+</div></header>
+<main id="question-bank">
+<div class="toolbar">
+<div class="search-wrap"><span class="search-icon">⌕</span><input id="search" type="search" placeholder="Search questions, topics or keywords…" aria-label="Search question bank"></div>
+<div class="actions"><button class="secondary" id="expand">Expand all</button><button class="secondary" id="collapse">Collapse all</button><button onclick="window.print()">Print / Save PDF</button></div>
+</div>
+<div class="filter-row" aria-label="Filter by module">
+<button class="filter active" data-filter="all">All Modules</button>
+<button class="filter" data-filter="1">Module 1</button><button class="filter" data-filter="2">Module 2</button><button class="filter" data-filter="3">Module 3</button><button class="filter" data-filter="4">Module 4</button><button class="filter" data-filter="5">Module 5</button>
+<button class="filter" data-filter="model">Model Paper</button>
+
+</div>
+<div class="info-strip"><span id="result-count">Showing all module-wise questions</span><span>Use the search box to find a question across all modules.</span></div>
+
+    <section class="module-panel" id="module-1" data-module="1">
+      <div class="module-head">
+        <div><span class="eyebrow">MODULE 1 · 6 hours</span>
+        <h2>Introduction to Soft Computing &amp; Artificial Neural Network</h2></div>
+        <span class="co">Course outcome: CO1</span>
+      </div>
+      <p class="coverage">Introduction to soft computing; hard vs soft computing; applications; artificial vs biological neurons; basic ANN models; network connections; learning; activation functions; McCulloch–Pitts neuron; Hebb network.</p>
+      <details open>
+        <summary><span>Part A – Short-answer questions</span><small>15 questions · 3 marks</small></summary>
+        <ol class="questions"><li data-q="differentiate hard computing and soft computing."><span class="qno">1.</span> Differentiate hard computing and soft computing.</li>
+<li data-q="list the major characteristics of soft computing and mention three applications."><span class="qno">2.</span> List the major characteristics of soft computing and mention three applications.</li>
+<li data-q="compare an artificial neuron with a biological neuron."><span class="qno">3.</span> Compare an artificial neuron with a biological neuron.</li>
+<li data-q="draw a simple artificial neuron and explain the calculation of net input."><span class="qno">4.</span> Draw a simple artificial neuron and explain the calculation of net input.</li>
+<li data-q="explain the role of bias. what happens to the output if bias is omitted?"><span class="qno">5.</span> Explain the role of bias. What happens to the output if bias is omitted?</li>
+<li data-q="list supervised, unsupervised and reinforcement learning with one example each."><span class="qno">6.</span> List supervised, unsupervised and reinforcement learning with one example each.</li>
+<li data-q="compare feed-forward and feedback neural networks."><span class="qno">7.</span> Compare feed-forward and feedback neural networks.</li>
+<li data-q="illustrate the different types of neural-network connections."><span class="qno">8.</span> Illustrate the different types of neural-network connections.</li>
+<li data-q="what is an activation function? explain its role in an ann."><span class="qno">9.</span> What is an activation function? Explain its role in an ANN.</li>
+<li data-q="list five activation functions and write their mathematical expressions."><span class="qno">10.</span> List five activation functions and write their mathematical expressions.</li>
+<li data-q="distinguish binary sigmoid and bipolar sigmoid functions."><span class="qno">11.</span> Distinguish binary sigmoid and bipolar sigmoid functions.</li>
+<li data-q="explain the mcculloch–pitts neuron model and the role of threshold."><span class="qno">12.</span> Explain the McCulloch–Pitts neuron model and the role of threshold.</li>
+<li data-q="define linear separability with examples."><span class="qno">13.</span> Define linear separability with examples.</li>
+<li data-q="state hebb&#x27;s learning rule and explain weight updation."><span class="qno">14.</span> State Hebb&#x27;s learning rule and explain weight updation.</li>
+<li data-q="why is xor not implementable using a single linear decision boundary?"><span class="qno">15.</span> Why is XOR not implementable using a single linear decision boundary?</li></ol>
+      </details>
+      <details open>
+        <summary><span>Part B – Descriptive, diagram-based and numerical questions</span><small>16 questions · 14 marks</small></summary>
+        <ol class="questions"><li data-q="explain the architecture of an ann and compare it with a biological neural network. label dendrite, soma, axon, synapse and cell body."><span class="qno">16.</span> Explain the architecture of an ANN and compare it with a biological neural network. Label dendrite, soma, axon, synapse and cell body.</li>
+<li data-q="explain supervised, unsupervised and reinforcement learning with real-world applications. explain the role of critic information."><span class="qno">17.</span> Explain supervised, unsupervised and reinforcement learning with real-world applications. Explain the role of critic information.</li>
+<li data-q="draw and explain the five types of neural-network connections."><span class="qno">18.</span> Draw and explain the five types of neural-network connections.</li>
+<li data-q="explain the need for activation functions. discuss common functions with equations and sketches, including binary and bipolar sigmoid."><span class="qno">19.</span> Explain the need for activation functions. Discuss common functions with equations and sketches, including binary and bipolar sigmoid.</li>
+<li data-q="a biased neuron has x1=0.7, x2=0.8, w1=0.2, w2=0.3 and bias weight 0.9. calculate binary-sigmoid and bipolar-sigmoid outputs."><span class="qno">20.</span> A biased neuron has X1=0.7, X2=0.8, W1=0.2, W2=0.3 and bias weight 0.9. Calculate binary-sigmoid and bipolar-sigmoid outputs.</li>
+<li data-q="a neuron has inputs (1,−2,0), weights (0.5,−1,2) and bias weight 0.9. calculate binary- and bipolar-sigmoid outputs."><span class="qno">21.</span> A neuron has inputs (1,−2,0), weights (0.5,−1,2) and bias weight 0.9. Calculate binary- and bipolar-sigmoid outputs.</li>
+<li data-q="for x1=0.6, x2=0.9, w1=0.4, w2=0.5 and bias weight 0.7, calculate binary- and bipolar-sigmoid outputs."><span class="qno">22.</span> For X1=0.6, X2=0.9, W1=0.4, W2=0.5 and bias weight 0.7, calculate binary- and bipolar-sigmoid outputs.</li>
+<li data-q="explain m-p neuron. implement and and nand using binary inputs; show truth tables, network and threshold conditions."><span class="qno">23.</span> Explain M-P neuron. Implement AND and NAND using binary inputs; show truth tables, network and threshold conditions.</li>
+<li data-q="implement and-not and or using m-p neuron. show truth tables, architecture and threshold conditions."><span class="qno">24.</span> Implement AND-NOT and OR using M-P neuron. Show truth tables, architecture and threshold conditions.</li>
+<li data-q="implement xor using an m-p network and explain why multiple neurons/layers are required."><span class="qno">25.</span> Implement XOR using an M-P network and explain why multiple neurons/layers are required.</li>
+<li data-q="define linear separability. demonstrate why xor is not linearly separable using a decision-boundary diagram."><span class="qno">26.</span> Define linear separability. Demonstrate why XOR is not linearly separable using a decision-boundary diagram.</li>
+<li data-q="draw the flowchart and explain the hebb training algorithm."><span class="qno">27.</span> Draw the flowchart and explain the Hebb training algorithm.</li>
+<li data-q="using hebb&#x27;s rule, design a network for or with bipolar inputs and targets. show the complete weight-update table."><span class="qno">28.</span> Using Hebb&#x27;s rule, design a network for OR with bipolar inputs and targets. Show the complete weight-update table.</li>
+<li data-q="using hebb&#x27;s rule, design a network for and with bipolar inputs and targets. show all weight updates."><span class="qno">29.</span> Using Hebb&#x27;s rule, design a network for AND with bipolar inputs and targets. Show all weight updates.</li>
+<li data-q="train a hebb network with (1,1)→1, (−1,−1)→1, (1,−1)→−1 and (−1,1)→−1. calculate the final weight vector."><span class="qno">30.</span> Train a Hebb network with (1,1)→1, (−1,−1)→1, (1,−1)→−1 and (−1,1)→−1. Calculate the final weight vector.</li>
+<li data-q="find hebb weights for the supplied pattern-classification grid where &#x27;+&#x27;=1 and blank=−1; target +1 indicates class membership and −1 indicates non-membership. test the trained network."><span class="qno">31.</span> Find Hebb weights for the supplied pattern-classification grid where &#x27;+&#x27;=1 and blank=−1; target +1 indicates class membership and −1 indicates non-membership. Test the trained network.</li></ol>
+      </details>
+    </section>
+    <section class="module-panel" id="module-2" data-module="2">
+      <div class="module-head">
+        <div><span class="eyebrow">MODULE 2 · 7 hours</span>
+        <h2>Supervised Learning Network</h2></div>
+        <span class="co">Course outcome: CO2</span>
+      </div>
+      <p class="coverage">Perceptron learning rule, training and testing; ADALINE architecture, training and testing; Delta/Widrow–Hoff rule; Back Propagation Network architecture, training and testing.</p>
+      <details open>
+        <summary><span>Part A – Short-answer questions</span><small>12 questions · 3 marks</small></summary>
+        <ol class="questions"><li data-q="state the perceptron learning rule and explain weight updation."><span class="qno">32.</span> State the perceptron learning rule and explain weight updation.</li>
+<li data-q="list the steps in the perceptron training algorithm for a single-output class."><span class="qno">33.</span> List the steps in the perceptron training algorithm for a single-output class.</li>
+<li data-q="write the testing algorithm used in a perceptron network."><span class="qno">34.</span> Write the testing algorithm used in a perceptron network.</li>
+<li data-q="mention applications of perceptron networks."><span class="qno">35.</span> Mention applications of perceptron networks.</li>
+<li data-q="what is adaline? draw its architecture."><span class="qno">36.</span> What is ADALINE? Draw its architecture.</li>
+<li data-q="explain the delta rule / widrow–hoff learning rule used in adaline."><span class="qno">37.</span> Explain the Delta Rule / Widrow–Hoff learning rule used in ADALINE.</li>
+<li data-q="differentiate perceptron and adaline."><span class="qno">38.</span> Differentiate perceptron and ADALINE.</li>
+<li data-q="distinguish training and testing in adaline."><span class="qno">39.</span> Distinguish training and testing in ADALINE.</li>
+<li data-q="list the stages in the back propagation network algorithm."><span class="qno">40.</span> List the stages in the Back Propagation Network algorithm.</li>
+<li data-q="explain the significance of error terms δk and δj."><span class="qno">41.</span> Explain the significance of error terms δk and δj.</li>
+<li data-q="explain forward-pass and backward-pass phases."><span class="qno">42.</span> Explain forward-pass and backward-pass phases.</li>
+<li data-q="why is a differentiable activation function used in backpropagation?"><span class="qno">43.</span> Why is a differentiable activation function used in backpropagation?</li></ol>
+      </details>
+      <details open>
+        <summary><span>Part B – Descriptive, diagram-based and numerical questions</span><small>18 questions · 14 marks</small></summary>
+        <ol class="questions"><li data-q="draw the perceptron architecture and explain its training and testing algorithms."><span class="qno">44.</span> Draw the perceptron architecture and explain its training and testing algorithms.</li>
+<li data-q="implement and using a perceptron with binary inputs and bipolar targets. show weight updates."><span class="qno">45.</span> Implement AND using a perceptron with binary inputs and bipolar targets. Show weight updates.</li>
+<li data-q="implement or using a perceptron with binary inputs and bipolar targets. perform two epochs."><span class="qno">46.</span> Implement OR using a perceptron with binary inputs and bipolar targets. Perform two epochs.</li>
+<li data-q="find perceptron weights for class +1: (1,1,1,1), (−1,1,−1,−1); class −1: (1,1,1,−1), (1,−1,−1,1). use learning rate 1 and initial weights 0."><span class="qno">47.</span> Find perceptron weights for class +1: (1,1,1,1), (−1,1,−1,−1); class −1: (1,1,1,−1), (1,−1,−1,1). Use learning rate 1 and initial weights 0.</li>
+<li data-q="find weights for class +1: (1,1,−1,−1), (1,−1,1,−1); class −1: (−1,−1,−1,1), (−1,−1,1,1). use learning rate 1 and initial weights 0."><span class="qno">48.</span> Find weights for class +1: (1,1,−1,−1), (1,−1,1,−1); class −1: (−1,−1,−1,1), (−1,−1,1,1). Use learning rate 1 and initial weights 0.</li>
+<li data-q="design a perceptron for and with binary inputs and bipolar targets. show iterations and verify."><span class="qno">49.</span> Design a perceptron for AND with binary inputs and bipolar targets. Show iterations and verify.</li>
+<li data-q="draw and explain adaline architecture. explain the delta rule and the roles of learning rate and error."><span class="qno">50.</span> Draw and explain ADALINE architecture. Explain the Delta Rule and the roles of learning rate and error.</li>
+<li data-q="explain adaline training and testing algorithms for a single-output class."><span class="qno">51.</span> Explain ADALINE training and testing algorithms for a single-output class.</li>
+<li data-q="train or using adaline with bipolar inputs and targets for one epoch. initial w1=w2=b=0.1 and α=0.1."><span class="qno">52.</span> Train OR using ADALINE with bipolar inputs and targets for one epoch. Initial w1=w2=b=0.1 and α=0.1.</li>
+<li data-q="train or using adaline with bipolar inputs and targets for two epochs. initial weights and bias are 0.1 and learning rate is 0.1."><span class="qno">53.</span> Train OR using ADALINE with bipolar inputs and targets for two epochs. Initial weights and bias are 0.1 and learning rate is 0.1.</li>
+<li data-q="perform one adaline epoch for or with binary inputs and bipolar targets, w1=0.3, w2=−0.2 and η=0.1."><span class="qno">54.</span> Perform one ADALINE epoch for OR with binary inputs and bipolar targets, w1=0.3, w2=−0.2 and η=0.1.</li>
+<li data-q="perform one adaline epoch for and with binary inputs and bipolar outputs, w1=0.2, w2=0.1 and η=0.2."><span class="qno">55.</span> Perform one ADALINE epoch for AND with binary inputs and bipolar outputs, w1=0.2, w2=0.1 and η=0.2.</li>
+<li data-q="train and-not using adaline with bipolar inputs and targets for two epochs."><span class="qno">56.</span> Train AND-NOT using ADALINE with bipolar inputs and targets for two epochs.</li>
+<li data-q="train or using adaline with bipolar inputs and targets and calculate total mean-square error for three epochs."><span class="qno">57.</span> Train OR using ADALINE with bipolar inputs and targets and calculate total mean-square error for three epochs.</li>
+<li data-q="draw bpn architecture and explain initialization, forward pass, error calculation, backpropagation and weight update."><span class="qno">58.</span> Draw BPN architecture and explain initialization, forward pass, error calculation, backpropagation and weight update.</li>
+<li data-q="explain propagation of error in bpn. explain the significance and calculation of δk and δj."><span class="qno">59.</span> Explain propagation of error in BPN. Explain the significance and calculation of δk and δj.</li>
+<li data-q="write bpn training and testing algorithms. explain learning rate and stopping criterion."><span class="qno">60.</span> Write BPN training and testing algorithms. Explain learning rate and stopping criterion.</li>
+<li data-q="a feed-forward network has x=[1,2], w1=[[0.1,0.2],[0.3,0.4]], w2=[0.5,0.6], b1=[0.1,0.2], b2=0.3. using sigmoid activation, perform the forward pass."><span class="qno">61.</span> A feed-forward network has x=[1,2], W1=[[0.1,0.2],[0.3,0.4]], W2=[0.5,0.6], b1=[0.1,0.2], b2=0.3. Using sigmoid activation, perform the forward pass.</li></ol>
+      </details>
+    </section>
+    <section class="module-panel" id="module-3" data-module="3">
+      <div class="module-head">
+        <div><span class="eyebrow">MODULE 3 · 8 hours</span>
+        <h2>Fuzzy Logic &amp; Defuzzification</h2></div>
+        <span class="co">Course outcome: CO3</span>
+      </div>
+      <p class="coverage">Fuzzy sets, properties and operations; membership functions and fuzzification; membership-value assignment by intuition, inference and rank ordering; fuzzy relations and operations; fuzzy propositions and implications; lambda cuts; defuzzification.</p>
+      <details open>
+        <summary><span>Part A – Short-answer questions</span><small>18 questions · 3 marks</small></summary>
+        <ol class="questions"><li data-q="define a fuzzy set and membership function."><span class="qno">62.</span> Define a fuzzy set and membership function.</li>
+<li data-q="list and explain basic properties of fuzzy sets."><span class="qno">63.</span> List and explain basic properties of fuzzy sets.</li>
+<li data-q="what is the relevance of fuzzification?"><span class="qno">64.</span> What is the relevance of fuzzification?</li>
+<li data-q="explain support, core and boundary with a membership-function sketch."><span class="qno">65.</span> Explain support, core and boundary with a membership-function sketch.</li>
+<li data-q="list the features of fuzzy membership functions."><span class="qno">66.</span> List the features of fuzzy membership functions.</li>
+<li data-q="differentiate crisp sets and fuzzy sets."><span class="qno">67.</span> Differentiate crisp sets and fuzzy sets.</li>
+<li data-q="explain union, intersection and complement of fuzzy sets."><span class="qno">68.</span> Explain union, intersection and complement of fuzzy sets.</li>
+<li data-q="define algebraic sum, algebraic product, bounded sum and bounded difference."><span class="qno">69.</span> Define algebraic sum, algebraic product, bounded sum and bounded difference.</li>
+<li data-q="explain intuition-based membership-value assignment."><span class="qno">70.</span> Explain intuition-based membership-value assignment.</li>
+<li data-q="differentiate inference-based and intuition-based membership assignment."><span class="qno">71.</span> Differentiate inference-based and intuition-based membership assignment.</li>
+<li data-q="what is rank-ordering-based membership assignment?"><span class="qno">72.</span> What is rank-ordering-based membership assignment?</li>
+<li data-q="define fuzzy relation and cartesian product."><span class="qno">73.</span> Define fuzzy relation and Cartesian product.</li>
+<li data-q="define max-min and max-product composition."><span class="qno">74.</span> Define max-min and max-product composition.</li>
+<li data-q="state conditions for fuzzy tolerance and fuzzy equivalence relations."><span class="qno">75.</span> State conditions for fuzzy tolerance and fuzzy equivalence relations.</li>
+<li data-q="what is a λ-cut? distinguish λ-cut and strong λ-cut."><span class="qno">76.</span> What is a λ-cut? Distinguish λ-cut and strong λ-cut.</li>
+<li data-q="define fuzzy proposition and fuzzy implication."><span class="qno">77.</span> Define fuzzy proposition and fuzzy implication.</li>
+<li data-q="what is defuzzification and why is it required?"><span class="qno">78.</span> What is defuzzification and why is it required?</li>
+<li data-q="list commonly used defuzzification methods."><span class="qno">79.</span> List commonly used defuzzification methods.</li></ol>
+      </details>
+      <details open>
+        <summary><span>Part B – Descriptive, diagram-based and numerical questions</span><small>21 questions · 14 marks</small></summary>
+        <ol class="questions"><li data-q="explain fuzzy sets and their properties. illustrate union, intersection and complement using examples and venn diagrams."><span class="qno">80.</span> Explain fuzzy sets and their properties. Illustrate union, intersection and complement using examples and Venn diagrams.</li>
+<li data-q="for a={(x1,0.7),(x2,0.3),(x3,0.9)} and b={(x1,0.6),(x2,0.4),(x3,0.8)}, calculate intersection, union and complements."><span class="qno">81.</span> For A={(x1,0.7),(x2,0.3),(x3,0.9)} and B={(x1,0.6),(x2,0.4),(x3,0.8)}, calculate intersection, union and complements.</li>
+<li data-q="for a={0.2/1,0.3/2,0.4/3,0.5/4} and b={0.1/1,0.2/2,0.2/3,1/4}, calculate algebraic sum, algebraic product, bounded sum and bounded difference."><span class="qno">82.</span> For A={0.2/1,0.3/2,0.4/3,0.5/4} and B={0.1/1,0.2/2,0.2/3,1/4}, calculate algebraic sum, algebraic product, bounded sum and bounded difference.</li>
+<li data-q="for a={0.4/1,0.6/2,0.8/3,0.3/4} and b={0.2/1,0.5/2,0.7/3,0.9/4}, calculate the four algebraic/bounded operations."><span class="qno">83.</span> For A={0.4/1,0.6/2,0.8/3,0.3/4} and B={0.2/1,0.5/2,0.7/3,0.9/4}, calculate the four algebraic/bounded operations.</li>
+<li data-q="define a universe of discourse and plot membership functions for vehicle speed: very slow, slow, moderate, fast and very fast."><span class="qno">84.</span> Define a universe of discourse and plot membership functions for vehicle speed: very slow, slow, moderate, fast and very fast.</li>
+<li data-q="construct room-temperature membership functions for cold, cool, warm, hot and very hot."><span class="qno">85.</span> Construct room-temperature membership functions for cold, cool, warm, hot and very hot.</li>
+<li data-q="using intuition, construct membership functions for age of people. state the universe and linguistic terms."><span class="qno">86.</span> Using intuition, construct membership functions for age of people. State the universe and linguistic terms.</li>
+<li data-q="construct fuzzy membership functions for tank liquid level using very small, small, empty, full and very full. state the universe."><span class="qno">87.</span> Construct fuzzy membership functions for tank liquid level using very small, small, empty, full and very full. State the universe.</li>
+<li data-q="using inference, determine membership values for triangle classes i, r, ir, e and t for the supplied angle set. practise angle sets (45°,55°,80°) and (120°,50°,10°)."><span class="qno">88.</span> Using inference, determine membership values for triangle classes I, R, IR, E and T for the supplied angle set. Practise angle sets (45°,55°,80°) and (120°,50°,10°).</li>
+<li data-q="explain intuition-based, inference-based and rank-ordering methods with examples."><span class="qno">89.</span> Explain intuition-based, inference-based and rank-ordering methods with examples.</li>
+<li data-q="given fuzzy sets a and b, find r=a×b. given another relation s, calculate r∘s using max-min and max-product composition."><span class="qno">90.</span> Given fuzzy sets A and B, find R=A×B. Given another relation S, calculate R∘S using max-min and max-product composition.</li>
+<li data-q="let a={(0.2/10),(0.3/30),(0.5/50),(0.7/70)}, b={(0.9/1),(0.6/2),(0.8/3),(0.5/4),(0.3/5),(0.2/6)} and c={(0.3/100),(0.6/200),(0.8/300),(0.4/400)}. find r=a×b, s=b×c and t=r∘s using both compositions."><span class="qno">91.</span> Let A={(0.2/10),(0.3/30),(0.5/50),(0.7/70)}, B={(0.9/1),(0.6/2),(0.8/3),(0.5/4),(0.3/5),(0.2/6)} and C={(0.3/100),(0.6/200),(0.8/300),(0.4/400)}. Find R=A×B, S=B×C and T=R∘S using both compositions.</li>
+<li data-q="for r=[[0.2,0.5],[0.6,0.8]] and s=[[0.4,0.7],[0.5,0.9]], calculate max-min and max-product compositions."><span class="qno">92.</span> For R=[[0.2,0.5],[0.6,0.8]] and S=[[0.4,0.7],[0.5,0.9]], calculate max-min and max-product compositions.</li>
+<li data-q="explain fuzzy tolerance and equivalence relations and state their required properties."><span class="qno">93.</span> Explain fuzzy tolerance and equivalence relations and state their required properties.</li>
+<li data-q="perform λ-cuts on a given fuzzy set/relation for λ=1, 0.9, 0.6, 0.5, 0+ and 0."><span class="qno">94.</span> Perform λ-cuts on a given fuzzy set/relation for λ=1, 0.9, 0.6, 0.5, 0+ and 0.</li>
+<li data-q="for a={1/a,0.9/b,0.6/c,0.3/d,0/e}, determine λ-cut sets for λ=1, 0.9, 0.6, 0+ and 0."><span class="qno">95.</span> For A={1/a,0.9/b,0.6/c,0.3/d,0/e}, determine λ-cut sets for λ=1, 0.9, 0.6, 0+ and 0.</li>
+<li data-q="explain fuzzy propositions and fuzzy implications with examples."><span class="qno">96.</span> Explain fuzzy propositions and fuzzy implications with examples.</li>
+<li data-q="define defuzzification and explain why a fuzzy output is converted to a crisp value."><span class="qno">97.</span> Define defuzzification and explain why a fuzzy output is converted to a crisp value.</li>
+<li data-q="explain four defuzzification methods with examples and diagrams."><span class="qno">98.</span> Explain four defuzzification methods with examples and diagrams.</li>
+<li data-q="given fuzzy output linguistic sets pass, fair, good and very good, calculate crisp output using weighted average and centre of sums using the values supplied in the question."><span class="qno">99.</span> Given fuzzy output linguistic sets Pass, Fair, Good and Very Good, calculate crisp output using weighted average and centre of sums using the values supplied in the question.</li>
+<li data-q="explain centroid/centre-of-area, bisector, mean of maxima, smallest of maxima, largest of maxima, weighted average and centre of sums."><span class="qno">100.</span> Explain centroid/centre-of-area, bisector, mean of maxima, smallest of maxima, largest of maxima, weighted average and centre of sums.</li></ol>
+      </details>
+    </section>
+    <section class="module-panel" id="module-4" data-module="4">
+      <div class="module-head">
+        <div><span class="eyebrow">MODULE 4 · 6 hours</span>
+        <h2>Fuzzy Inference System &amp; Genetic Algorithm</h2></div>
+        <span class="co">Course outcome: CO4</span>
+      </div>
+      <p class="coverage">Mamdani and Sugeno FIS; fuzzy logic controller; genetic algorithm concepts; chromosome coding/encoding; selection, crossover and mutation operators; stopping conditions.</p>
+      <details open>
+        <summary><span>Part A – Short-answer questions</span><small>15 questions · 3 marks</small></summary>
+        <ol class="questions"><li data-q="define fis and list its main components."><span class="qno">101.</span> Define FIS and list its main components.</li>
+<li data-q="draw an fis block diagram and state the function of each block."><span class="qno">102.</span> Draw an FIS block diagram and state the function of each block.</li>
+<li data-q="differentiate mamdani and sugeno fis."><span class="qno">103.</span> Differentiate Mamdani and Sugeno FIS.</li>
+<li data-q="what is a fuzzy logic controller? list its stages."><span class="qno">104.</span> What is a fuzzy logic controller? List its stages.</li>
+<li data-q="state the basic principle and steps of a genetic algorithm."><span class="qno">105.</span> State the basic principle and steps of a genetic algorithm.</li>
+<li data-q="what is chromosome encoding? list encoding schemes."><span class="qno">106.</span> What is chromosome encoding? List encoding schemes.</li>
+<li data-q="differentiate value encoding and permutation encoding."><span class="qno">107.</span> Differentiate value encoding and permutation encoding.</li>
+<li data-q="explain roulette-wheel selection."><span class="qno">108.</span> Explain roulette-wheel selection.</li>
+<li data-q="explain stochastic universal sampling with an example."><span class="qno">109.</span> Explain stochastic universal sampling with an example.</li>
+<li data-q="what is tournament selection? explain tournament size."><span class="qno">110.</span> What is tournament selection? Explain tournament size.</li>
+<li data-q="define crossover. explain single-point and two-point crossover."><span class="qno">111.</span> Define crossover. Explain single-point and two-point crossover.</li>
+<li data-q="what is mutation and why is it required?"><span class="qno">112.</span> What is mutation and why is it required?</li>
+<li data-q="list four mutation techniques."><span class="qno">113.</span> List four mutation techniques.</li>
+<li data-q="state common stopping conditions for a genetic algorithm."><span class="qno">114.</span> State common stopping conditions for a genetic algorithm.</li>
+<li data-q="differentiate traditional optimization and genetic algorithms."><span class="qno">115.</span> Differentiate traditional optimization and genetic algorithms.</li></ol>
+      </details>
+      <details open>
+        <summary><span>Part B – Descriptive, diagram-based and numerical questions</span><small>18 questions · 14 marks</small></summary>
+        <ol class="questions"><li data-q="draw and explain fis architecture and working: fuzzification, rule base, database, inference engine and defuzzification."><span class="qno">116.</span> Draw and explain FIS architecture and working: fuzzification, rule base, database, inference engine and defuzzification.</li>
+<li data-q="explain mamdani fis with a suitable example and block diagram."><span class="qno">117.</span> Explain Mamdani FIS with a suitable example and block diagram.</li>
+<li data-q="explain sugeno fis with a suitable example and block diagram."><span class="qno">118.</span> Explain Sugeno FIS with a suitable example and block diagram.</li>
+<li data-q="compare mamdani and sugeno fis with respect to rule consequent, aggregation, output and defuzzification."><span class="qno">119.</span> Compare Mamdani and Sugeno FIS with respect to rule consequent, aggregation, output and defuzzification.</li>
+<li data-q="design a mamdani fuzzy controller for fan speed based on temperature and humidity. define variables, membership functions, rules, inference and defuzzification."><span class="qno">120.</span> Design a Mamdani fuzzy controller for fan speed based on temperature and humidity. Define variables, membership functions, rules, inference and defuzzification.</li>
+<li data-q="a mamdani system controls fan speed. rules: (1) t high and h low → fast; (2) t medium and h medium → normal; (3) t low or h high → slow. given μhigh(t)=0.8, μmedium(t)=0.5, μlow(t)=0.2, μlow(h)=0.6, μmedium(h)=0.4, μhigh(h)=0.7, determine fuzzy output using min-max."><span class="qno">121.</span> A Mamdani system controls fan speed. Rules: (1) T High AND H Low → Fast; (2) T Medium AND H Medium → Normal; (3) T Low OR H High → Slow. Given μHigh(T)=0.8, μMedium(T)=0.5, μLow(T)=0.2, μLow(H)=0.6, μMedium(H)=0.4, μHigh(H)=0.7, determine fuzzy output using min-max.</li>
+<li data-q="explain fuzzy logic controller architecture with a labelled block diagram."><span class="qno">122.</span> Explain fuzzy logic controller architecture with a labelled block diagram.</li>
+<li data-q="explain the basic genetic algorithm with pseudocode and flowchart."><span class="qno">123.</span> Explain the basic genetic algorithm with pseudocode and flowchart.</li>
+<li data-q="discuss binary, value and permutation encoding and other encoding schemes included in the course. give examples."><span class="qno">124.</span> Discuss binary, value and permutation encoding and other encoding schemes included in the course. Give examples.</li>
+<li data-q="differentiate value and permutation encoding with examples."><span class="qno">125.</span> Differentiate value and permutation encoding with examples.</li>
+<li data-q="explain roulette-wheel, tournament, stochastic universal sampling and rank-based selection."><span class="qno">126.</span> Explain roulette-wheel, tournament, stochastic universal sampling and rank-based selection.</li>
+<li data-q="a population has six individuals with fitness scores {8,12,15,5,20,10}. perform tournament selection with tournament size 2. state assumptions about sampled competitors."><span class="qno">127.</span> A population has six individuals with fitness scores {8,12,15,5,20,10}. Perform tournament selection with tournament size 2. State assumptions about sampled competitors.</li>
+<li data-q="explain single-point, two-point and uniform crossover with parent/offspring examples."><span class="qno">128.</span> Explain single-point, two-point and uniform crossover with parent/offspring examples.</li>
+<li data-q="explain three-parent, shuffle and precedence-preservative crossover with examples."><span class="qno">129.</span> Explain three-parent, shuffle and precedence-preservative crossover with examples.</li>
+<li data-q="explain mutation for binary, value and permutation representations."><span class="qno">130.</span> Explain mutation for binary, value and permutation representations.</li>
+<li data-q="explain four mutation techniques and how mutation maintains population diversity."><span class="qno">131.</span> Explain four mutation techniques and how mutation maintains population diversity.</li>
+<li data-q="using roulette-wheel selection, maximize f(x)=x² over {0,1,2,…,31}. show encoding, fitness, selection probabilities, crossover and mutation."><span class="qno">132.</span> Using roulette-wheel selection, maximize f(x)=x² over {0,1,2,…,31}. Show encoding, fitness, selection probabilities, crossover and mutation.</li>
+<li data-q="explain ga stopping conditions, including maximum generations, fitness threshold and population convergence."><span class="qno">133.</span> Explain GA stopping conditions, including maximum generations, fitness threshold and population convergence.</li></ol>
+      </details>
+    </section>
+    <section class="module-panel" id="module-5" data-module="5">
+      <div class="module-head">
+        <div><span class="eyebrow">MODULE 5 · 8 hours</span>
+        <h2>Multi-Objective Optimization &amp; Hybrid System</h2></div>
+        <span class="co">Course outcome: CO5</span>
+      </div>
+      <p class="coverage">MOOP; linear/nonlinear and convex/non-convex problems; objectives and Pareto principles; dominance, Pareto optimality and dominance-relation properties; non-dominated set; optimality conditions; neuro-fuzzy and genetic-neuro hybrid systems.</p>
+      <details open>
+        <summary><span>Part A – Short-answer questions</span><small>16 questions · 3 marks</small></summary>
+        <ol class="questions"><li data-q="define a multi-objective optimization problem."><span class="qno">134.</span> Define a Multi-Objective Optimization Problem.</li>
+<li data-q="write the mathematical form of a moop."><span class="qno">135.</span> Write the mathematical form of a MOOP.</li>
+<li data-q="differentiate linear and nonlinear moop."><span class="qno">136.</span> Differentiate linear and nonlinear MOOP.</li>
+<li data-q="differentiate convex and non-convex moop."><span class="qno">137.</span> Differentiate convex and non-convex MOOP.</li>
+<li data-q="explain the principles of multi-objective optimization."><span class="qno">138.</span> Explain the principles of multi-objective optimization.</li>
+<li data-q="define weak dominance, strict dominance and non-dominance."><span class="qno">139.</span> Define weak dominance, strict dominance and non-dominance.</li>
+<li data-q="what is pareto optimality?"><span class="qno">140.</span> What is Pareto optimality?</li>
+<li data-q="what is a pareto-optimal solution and pareto front?"><span class="qno">141.</span> What is a Pareto-optimal solution and Pareto front?</li>
+<li data-q="explain properties of a dominance relation."><span class="qno">142.</span> Explain properties of a dominance relation.</li>
+<li data-q="how is a non-dominated set identified?"><span class="qno">143.</span> How is a non-dominated set identified?</li>
+<li data-q="what are optimality conditions in moo?"><span class="qno">144.</span> What are optimality conditions in MOO?</li>
+<li data-q="list characteristics of neuro-fuzzy hybrid systems."><span class="qno">145.</span> List characteristics of neuro-fuzzy hybrid systems.</li>
+<li data-q="list classifications/types of neuro-fuzzy hybrid systems."><span class="qno">146.</span> List classifications/types of neuro-fuzzy hybrid systems.</li>
+<li data-q="what is a genetic-neuro hybrid system?"><span class="qno">147.</span> What is a genetic-neuro hybrid system?</li>
+<li data-q="list advantages of genetic-neuro hybrid systems."><span class="qno">148.</span> List advantages of genetic-neuro hybrid systems.</li>
+<li data-q="how do genetic algorithms and neural networks complement each other?"><span class="qno">149.</span> How do genetic algorithms and neural networks complement each other?</li></ol>
+      </details>
+      <details open>
+        <summary><span>Part B – Descriptive, diagram-based and numerical questions</span><small>16 questions · 14 marks</small></summary>
+        <ol class="questions"><li data-q="explain mathematical formulation and classification of multi-objective optimization problems."><span class="qno">150.</span> Explain mathematical formulation and classification of multi-objective optimization problems.</li>
+<li data-q="explain linear and nonlinear moop with examples."><span class="qno">151.</span> Explain linear and nonlinear MOOP with examples.</li>
+<li data-q="explain convex and non-convex moop with diagrams and examples."><span class="qno">152.</span> Explain convex and non-convex MOOP with diagrams and examples.</li>
+<li data-q="explain moo principles and illustrate pareto-optimal solutions for a two-objective problem."><span class="qno">153.</span> Explain MOO principles and illustrate Pareto-optimal solutions for a two-objective problem.</li>
+<li data-q="explain weak dominance, strict dominance and non-dominance in pareto optimization with examples."><span class="qno">154.</span> Explain weak dominance, strict dominance and non-dominance in Pareto optimization with examples.</li>
+<li data-q="explain properties of a dominance relation, including reflexivity, antisymmetry and transitivity as applicable to the relation defined in the course."><span class="qno">155.</span> Explain properties of a dominance relation, including reflexivity, antisymmetry and transitivity as applicable to the relation defined in the course.</li>
+<li data-q="explain pareto optimality and pareto front. how are optimal solutions identified?"><span class="qno">156.</span> Explain Pareto optimality and Pareto front. How are optimal solutions identified?</li>
+<li data-q="describe the procedure for finding a non-dominated set from candidate solutions. demonstrate with an example."><span class="qno">157.</span> Describe the procedure for finding a non-dominated set from candidate solutions. Demonstrate with an example.</li>
+<li data-q="explain optimality conditions in multi-objective optimization."><span class="qno">158.</span> Explain optimality conditions in multi-objective optimization.</li>
+<li data-q="explain characteristics and classifications of neuro-fuzzy hybrid systems with diagrams."><span class="qno">159.</span> Explain characteristics and classifications of neuro-fuzzy hybrid systems with diagrams.</li>
+<li data-q="describe classifications of neuro-fuzzy systems. explain cooperative and other syllabus-relevant architectures with diagrams."><span class="qno">160.</span> Describe classifications of neuro-fuzzy systems. Explain cooperative and other syllabus-relevant architectures with diagrams.</li>
+<li data-q="explain tuning in genetic-fuzzy rule-based systems."><span class="qno">161.</span> Explain tuning in genetic-fuzzy rule-based systems.</li>
+<li data-q="draw and explain the block diagram and working steps of a genetic-neuro hybrid system."><span class="qno">162.</span> Draw and explain the block diagram and working steps of a genetic-neuro hybrid system.</li>
+<li data-q="explain advantages and properties of genetic-neuro hybrid systems."><span class="qno">163.</span> Explain advantages and properties of genetic-neuro hybrid systems.</li>
+<li data-q="explain how gas and neural networks complement each other in a genetic-neuro hybrid system, with a real-world moo application."><span class="qno">164.</span> Explain how GAs and neural networks complement each other in a genetic-neuro hybrid system, with a real-world MOO application.</li>
+<li data-q="compare neuro-fuzzy and genetic-neuro hybrid systems in architecture, learning/optimization and applications."><span class="qno">165.</span> Compare neuro-fuzzy and genetic-neuro hybrid systems in architecture, learning/optimization and applications.</li></ol>
+      </details>
+    </section>
+
+
+<section class="pyq-archive" id="previous-year-papers">
+  <div class="pyq-archive-head">
+    <div>
+      <span class="eyebrow">UNIVERSITY EXAMINATION ARCHIVE</span>
+      <h2>Previous Year Question Papers</h2>
+      <p>Original CST444 Soft Computing university question papers, arranged by examination session. Open a paper to view it or download the PDF for practice.</p>
+    </div>
+    <span class="co">8 Papers · 2023–2026</span>
+  </div>
+  <h3 class="pyq-year">2026</h3>
+  <div class="pyq-grid"><article class="pyq-item">
+          <div class="session">September 2026</div>
+          <div class="meta">B.Tech S8 Supplementary (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_September_2026.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article><article class="pyq-item">
+          <div class="session">April 2026</div>
+          <div class="meta">B.Tech S8 Regular/Supplementary (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_April_2026.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article></div>
+  <h3 class="pyq-year">2025</h3>
+  <div class="pyq-grid"><article class="pyq-item">
+          <div class="session">September 2025</div>
+          <div class="meta">B.Tech S8 Examination (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_September_2025.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article><article class="pyq-item">
+          <div class="session">April 2025</div>
+          <div class="meta">B.Tech S8 Regular/Supplementary (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_April_2025.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article></div>
+  <h3 class="pyq-year">2024</h3>
+  <div class="pyq-grid"><article class="pyq-item">
+          <div class="session">August 2024</div>
+          <div class="meta">B.Tech S8 Supplementary (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_August_2024.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article><article class="pyq-item">
+          <div class="session">May 2024</div>
+          <div class="meta">B.Tech S8 Regular/Supplementary (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_May_2024.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article></div>
+  <h3 class="pyq-year">2023</h3>
+  <div class="pyq-grid"><article class="pyq-item">
+          <div class="session">October 2023</div>
+          <div class="meta">B.Tech S8 Supplementary (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_October_2023.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article><article class="pyq-item">
+          <div class="session">June 2023</div>
+          <div class="meta">B.Tech S8 Regular (2019 Scheme)<br>3-page question paper · PDF</div>
+          <a href="previous-year-papers/CST444_June_2023.pdf" target="_blank" rel="noopener">View / Download PDF</a>
+        </article></div>
+</section>
+
+<div class="model-paper" id="model-paper" data-module="model">
+<span class="eyebrow">APPENDIX A · OFFICIAL SYLLABUS MODEL PAPER</span>
+<h2>Model Question Paper</h2>
+<p class="model-meta">APJ Abdul Kalam Technological University · CST444 – Soft Computing · Maximum marks: 100 · Duration: 3 hours</p>
+<details open><summary><span>Part A – Answer all questions</span><small>10 × 3 = 30 marks</small></summary><ol class="questions"><li data-q="explain the architecture of a simple artificial neural network. compare it with a biological neuron."><span class="qno">166.</span> Explain the architecture of a simple Artificial Neural Network. Compare it with a biological neuron.</li>
+<li data-q="a 4-input neuron has weights 1, 2, 3 and 4. the transfer function is linear with constant of proportionality 2. inputs are 4, 10, 5 and 20 respectively. predict the output."><span class="qno">167.</span> A 4-input neuron has weights 1, 2, 3 and 4. The transfer function is linear with constant of proportionality 2. Inputs are 4, 10, 5 and 20 respectively. Predict the output.</li>
+<li data-q="explain the widrow–hoff learning rule for supervised learning in neural networks with an example. why is it sometimes called the lms learning rule?"><span class="qno">168.</span> Explain the Widrow–Hoff learning rule for supervised learning in neural networks with an example. Why is it sometimes called the LMS learning rule?</li>
+<li data-q="implement one epoch of adaline for and logic with binary inputs and bipolar outputs. initial weights w1=0.2, w2=0.1 and learning-rate η=0.2."><span class="qno">169.</span> Implement one epoch of ADALINE for AND logic with binary inputs and bipolar outputs. Initial weights w1=0.2, w2=0.1 and learning-rate η=0.2.</li>
+<li data-q="given a={0.2/0 + 0.3/1 + 1/2 + 0.1/3 + 0.5/4} and b={0.1/0 + 0.25/1 + 0.9/2 + 0.7/3 + 0.3/4}, find (a) algebraic sum, (b) algebraic product and (c) bounded sum."><span class="qno">170.</span> Given A={0.2/0 + 0.3/1 + 1/2 + 0.1/3 + 0.5/4} and B={0.1/0 + 0.25/1 + 0.9/2 + 0.7/3 + 0.3/4}, find (a) algebraic sum, (b) algebraic product and (c) bounded sum.</li>
+<li data-q="using intuition and a defined universe of discourse, plot membership functions for liquid level: empty, very less, less, full and very full."><span class="qno">171.</span> Using intuition and a defined universe of discourse, plot membership functions for liquid level: empty, very less, less, full and very full.</li>
+<li data-q="explain stochastic universal sampling with an example."><span class="qno">172.</span> Explain Stochastic Universal Sampling with an example.</li>
+<li data-q="explain any two mutation methods."><span class="qno">173.</span> Explain any two mutation methods.</li>
+<li data-q="differentiate linear and nonlinear multi-objective optimization problems."><span class="qno">174.</span> Differentiate linear and nonlinear Multi-Objective Optimization Problems.</li>
+<li data-q="what are the characteristics of neuro-fuzzy hybrid systems?"><span class="qno">175.</span> What are the characteristics of neuro-fuzzy hybrid systems?</li></ol></details>
+<details open><summary><span>Part B – Answer any one question from each module</span><small>5 × 14 = 70 marks</small></summary>
+<div class="model-group"><h3>Module I – Q11 / OR Q12</h3><ol><li>(Q11 a) Implement XOR using M-P Neuron Model with binary input. Why is M-P neuron widely used in processing binary data? (8)</li><li>(Q11 b) Using Hebb Network, calculate the weights for the pattern classification shown in the syllabus model paper. L belongs to class (+), target +1; U does not belong to class (−), target −1. (6)</li><li>OR</li><li>(Q12 a) Compare the three learning approaches in ANN. How is critic information used in the learning process? (8)</li><li>(Q12 b) Define Hebb Law. Design a Hebb Network to implement logical AND using bipolar inputs and targets. (7)</li></ol></div><div class="model-group"><h3>Module II – Q13 / OR Q14</h3><ol><li>(Q13 a) Discuss the training algorithm and explain weight updates in backpropagation networks. (10)</li><li>(Q13 b) Implement one epoch of perceptron training for OR with binary input and bipolar output. (4)</li><li>OR</li><li>(Q14 a) Explain how synaptic weights are adapted iteration by iteration using the error-correction rule in the perceptron convergence algorithm for OR with binary inputs and outputs. Initial weights are zero and η=0.1. (10)</li><li>(Q14 b) Explain the perceptron convergence theorem and discuss the perceptron algorithm based on XOR logic function. (4)</li></ol></div><div class="model-group"><h3>Module III – Q15 / OR Q16</h3><ol><li>(Q15 a) For A={0.1/30,0.2/60,0.3/90,0.4/120}, B={0.1/20,0.2/50,0.7/80,0.5/110} and C={0.33/100,0.65/200,0.92/300,0.21/400}, find R=A×B, S=B×C, and T=R∘S using max-min and max-product composition. (10)</li><li>(Q15 b) For A={0.5/x1,0.2/x2,0.9/x3} and B={1/y1,0.5/y2,1/y3}, find relation R using Cartesian product. (4)</li><li>OR</li><li>(Q16 a) Using inference, find membership values for triangle categories (I, R, IR, T) for angles 120°, 50°, 10°. (8)</li><li>(Q16 b) Using Zadeh notation, determine λ-cut sets for S1={0/0,0.5/20,0.65/40,0.85/60,1.0/80,1.0/100} and S2={0/0,0.45/20,0.6/40,0.8/60,0.95/80,1.0/100}. For λ=0.5, find S1∪S2, complement of S2 and S1∩S2. (6)</li></ol></div><div class="model-group"><h3>Module IV – Q17 / OR Q18</h3><ol><li>(Q17 a) Differentiate value encoding and permutation encoding. (8)</li><li>(Q17 b) Explain stopping conditions for a genetic algorithm. (6)</li><li>OR</li><li>(Q18 a) Apply Mamdani fuzzy model to design a controller for wash time of a domestic washing machine. Assume dirt is dark and grease is high. Use three descriptors for input variables and five descriptors for output variable. Derive rules and defuzzification, supported by figures. (10)</li><li>(Q18 b) Explain single-point and two-point crossover with examples. (4)</li></ol></div><div class="model-group"><h3>Module V – Q19 / OR Q20</h3><ol><li>(Q19 a) Explain convex and non-convex MOOP. How is a non-dominated set found? (10)</li><li>(Q19 b) State the properties of dominance relation. (4)</li><li>OR</li><li>(Q20 a) Explain Genetic-Neuro Hybrid System with block diagram and advantages. (8)</li><li>(Q20 b) Discuss the classification of Neuro-Fuzzy Hybrid System. (6)</li></ol></div>
+</details>
+</div>
+<div class="empty" id="empty">No matching questions found. Try another keyword or module.</div>
+</main>
+<footer><strong>CST444 · SOFT COMPUTING</strong><br>Designed &amp; Developed by Ms. Arsha J K · Department of Computer Science &amp; Engineering</footer>
+<script>
+const search=document.getElementById('search');
+const filters=[...document.querySelectorAll('.filter')];
+const panels=[...document.querySelectorAll('.module-panel')];
+const model=document.querySelector('.model-paper');
+
+const empty=document.getElementById('empty');
+const count=document.getElementById('result-count');
+let active='all';
+
+
+function applyFilter(){
+ const term=search.value.trim().toLowerCase(); let shown=0;
+ [...panels,model].forEach(panel=>{
+   const isModel=panel===model;
+   const moduleMatch=active==='all'||(active==='model'&&isModel)||(!isModel&&active===panel.dataset.module);
+   const questions=[...panel.querySelectorAll('li')];
+   let local=0;
+   questions.forEach(li=>{
+     const match=moduleMatch&&(!term||li.textContent.toLowerCase().includes(term));
+     li.style.display=match?'':'none'; if(match)local++;
+   });
+   const hasMatch=moduleMatch&&local>0;
+   panel.style.display=hasMatch?'':'none';
+   if(hasMatch)shown+=local;
+ });
+ empty.style.display=shown?'none':'block';
+ count.textContent=`Showing ${shown} matching question${shown===1?'':'s'}`;
+}
+search.addEventListener('input',applyFilter);
+filters.forEach(btn=>btn.addEventListener('click',()=>{
+ active=btn.dataset.filter;filters.forEach(b=>b.classList.toggle('active',b===btn));applyFilter();
+}));
+document.getElementById('expand').addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=true));
+document.getElementById('collapse').addEventListener('click',()=>document.querySelectorAll('details').forEach(d=>d.open=false));
+applyFilter();
+</script>
+</body></html>
