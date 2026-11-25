@@ -34,10 +34,25 @@ button:hover{filter:brightness(1.07)}button:focus-visible{outline:3px solid #7dd
 
 .question p{margin:9px 0 0;font-size:1.06rem;white-space:pre-line}
 .result-actions{display:flex;gap:10px;flex-wrap:wrap;padding:0 20px 20px}.secondary{background:#eaf0fb;color:#1e3a8a}
+
+.submission{margin-top:20px;border:1px solid #bfdbfe;background:#f8fbff;border-radius:14px;padding:20px}
+.submission h3{margin:0 0 8px;color:#1e3a8a;font-size:1.12rem}
+.submission-intro{margin:0 0 15px;color:#475569}
+.submission-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:13px}
+.submission-step{background:#fff;border:1px solid #dbeafe;border-radius:11px;padding:15px}
+.submission-step .stepno{display:inline-flex;width:27px;height:27px;align-items:center;justify-content:center;border-radius:50%;background:#dbeafe;color:#1e40af;font-weight:850;margin-bottom:7px}
+.submission-step strong{display:block;color:var(--navy);margin-bottom:5px}
+.submission-step p{margin:0;color:#475569;font-size:.92rem}
+.codeformat{display:block;margin-top:7px;padding:9px 11px;background:#eff6ff;border-radius:8px;color:#1e3a8a;font: .88rem/1.5 ui-monospace,Consolas,monospace;overflow-wrap:anywhere}
+
+.github-submit{display:inline-flex!important;visibility:visible!important;opacity:1!important;align-items:center;justify-content:center;gap:8px;margin-top:12px;padding:11px 16px;border-radius:9px;background:#172033!important;color:#fff!important;text-decoration:none!important;font-weight:800;font-size:.92rem;box-shadow:0 3px 10px #0f172a18}
+.github-submit:hover{background:#263653;filter:none}
+.github-submit:focus-visible{outline:3px solid #7dd3fc;outline-offset:3px}
+.submission-note{margin-top:13px;padding:12px 14px;border-left:4px solid #2563eb;background:#eff6ff;color:#334155;border-radius:7px;font-size:.9rem}
 .instructions{margin-top:20px;padding:14px 16px;background:#f8fafc;border:1px solid var(--line);border-radius:12px;color:#475569;font-size:.9rem}
 footer{background:var(--navy);color:#cbd5e1;text-align:center;padding:25px 18px;font-size:.88rem}footer strong{color:white}
 @media(max-width:600px){.panel{padding:18px}.entry button{width:100%}.hero{padding:34px 20px}}
-@media print{nav,.hero,.assignment-grid,.entry,.instructions,footer,.result-actions{display:none!important}body{background:white}main{margin:0;padding:0;max-width:none}.panel{border:0;box-shadow:none;padding:0}.panel-head{display:none}.result{display:block!important;border:0;margin:0}.result-head{background:white;border-bottom:1px solid #aaa}.rolltag{border:1px solid #555;background:white;color:#111}}
+@media print{nav,.hero,.assignment-grid,.entry,.instructions,.submission,footer,.result-actions{display:none!important}body{background:white}main{margin:0;padding:0;max-width:none}.panel{border:0;box-shadow:none;padding:0}.panel-head{display:none}.result{display:block!important;border:0;margin:0}.result-head{background:white;border-bottom:1px solid #aaa}.rolltag{border:1px solid #555;background:white;color:#111}}
 </style></head><body>
 <nav><div class="navin"><a class="brand" href="index.html">CST444 <span>· SOFT COMPUTING</span></a><a class="back" href="index.html">Back to Course Home</a></div></nav>
 <header class="hero"><div class="wrap"><div class="eyebrow">Department of Computer Science &amp; Engineering</div><h1>Student Assignments</h1>
@@ -51,7 +66,23 @@ footer{background:var(--navy);color:#cbd5e1;text-align:center;padding:25px 18px;
 <section class="result" id="result" aria-live="polite"><div class="result-head"><h3 id="result-title">Assignment question</h3><span class="rolltag" id="rolltag"></span></div>
 <div class="qbody"><article class="question"><p id="question-text"></p></article></div>
 <div class="result-actions"><button type="button" onclick="window.print()">Print / Save as PDF</button><button type="button" class="secondary" id="change-roll">Change Roll Number</button></div></section>
-<div class="instructions"><strong>Student instructions</strong><ul><li>Select the required assignment and enter your roll number from 1 to 65.</li><li>One question is allocated per student for each assignment.</li><li>Show complete calculations, training tables, diagrams and explanations wherever applicable.</li><li>Use the Print / Save as PDF option to keep a copy of the assigned question.</li></ul></div>
+
+<section class="submission" id="submission-guidelines" aria-labelledby="submission-title">
+ <h3 id="submission-title">📤 Assignment Submission – Both Submissions Are Compulsory</h3>
+ <p class="submission-intro">Complete both steps for every assignment: submit the handwritten hard copy and upload its scanned PDF to GitHub.</p>
+ <div class="submission-grid">
+  <article class="submission-step"><span class="stepno">1</span><strong>Write on A4 sheets</strong><p>Write the complete answer neatly by hand. Include your name, university roll number, assignment number and module. Show calculations, tables and diagrams wherever required.</p></article>
+  <article class="submission-step"><span class="stepno">2</span><strong>Submit the hard copy</strong><p>Submit the handwritten assignment manually to the faculty on or before the announced due date. GitHub upload does not replace physical submission.</p></article>
+  <article class="submission-step"><span class="stepno">3</span><strong>Scan into one PDF</strong><p>Scan all completed pages in order and combine them into one clear, readable PDF. Check page orientation and legibility.</p></article>
+  <article class="submission-step"><span class="stepno">4</span><strong>Upload to GitHub</strong><p>Click the button to create your own repository from the CST444 assignment template. Then upload your scanned PDF into the appropriate assignment folder.</p>
+   <span class="codeformat">Assignments/Assignment-1/12_Assignment1.pdf</span>
+   <a class="github-submit" href="https://github.com/ArshaHarikrishnan/CST444-ASSIGNMENT-TEMPLATE/generate" target="_blank" rel="noopener noreferrer">↗ CREATE YOUR GITHUB SUBMISSION REPOSITORY</a>
+  </article>
+ </div>
+ <div class="submission-note"><strong>Important:</strong> Replace <code>12</code> in the filename with your university roll number. Upload one PDF per assignment and verify that it is visible in your repository. Both manual and GitHub submissions are compulsory.</div>
+</section>
+
+<div class="instructions"><strong>Student instructions</strong><ul><li>Select the required assignment and enter your roll number from 1 to 65.</li><li>One question is allocated per student for each assignment.</li><li>Show complete calculations, training tables, diagrams and explanations wherever applicable.</li><li>Use the Print / Save as PDF option to keep a copy of the assigned question.</li><li>Write your answer by hand on A4 sheets and submit the hard copy manually.</li><li>Upload one scanned PDF of the completed handwritten assignment to your individual GitHub repository. Both submissions are compulsory.</li></ul></div>
 </section></main>
 <footer><strong>CST444 · SOFT COMPUTING</strong><br>Department of Computer Science &amp; Engineering · Viswajyothi College of Engineering &amp; Technology</footer>
 <script>
