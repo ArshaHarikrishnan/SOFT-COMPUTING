@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CST444 | Module 2 Quiz</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--pale:#eff6ff;--ink:#1f2937;--muted:#64748b;--line:#dbe3ef;--green:#15803d;--red:#b91c1c}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:var(--ink);font:16px/1.6 Arial, sans-serif}
+header{background:linear-gradient(120deg,#14213d,#1d4ed8);color:white;padding:30px 18px;text-align:center}
+header h1{margin:0;font-size:clamp(1.5rem,4vw,2.2rem)}header p{margin:7px 0 0;color:#dbeafe}
+.wrap{max-width:1050px;margin:24px auto;padding:0 16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:white;padding:10px 17px;border-radius:9px;cursor:pointer;font-weight:700;color:var(--navy)}
+.tab.active{background:var(--blue);color:white;border-color:var(--blue)}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px 20px #0f172a0a}
+.panel.active{display:block}h2{color:var(--navy);margin-top:0}h3{color:#1d4ed8;margin-bottom:6px}
+.note{background:var(--pale);border-left:4px solid var(--blue);padding:12px 15px;border-radius:7px;margin:14px 0}
+.formula{background:#f8fafc;border:1px solid var(--line);padding:10px 13px;border-radius:7px;font-family:Consolas,monospace;overflow-x:auto}
+ul{padding-left:22px}.pyq{border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0}.tag{display:inline-block;background:#e0e7ff;color:#1e40af;padding:2px 8px;border-radius:20px;font-size:.82rem;font-weight:bold}
+.question{border-bottom:1px solid var(--line);padding:16px 0}.question:last-child{border:0}.question p{font-weight:700;margin:0 0 10px}
+.option{display:block;padding:8px 10px;margin:6px 0;border:1px solid var(--line);border-radius:8px;cursor:pointer}.option:hover{background:#f8fafc}.option input{margin-right:8px}
+.feedback{font-size:.94rem;margin-top:8px}.correct{color:var(--green)}.wrong{color:var(--red)}
+button.action{background:var(--blue);color:white;border:0;padding:11px 18px;border-radius:8px;font-weight:bold;cursor:pointer;margin:12px 8px 0 0}
+button.secondary{background:#e2e8f0;color:var(--navy)}#result{font-weight:bold;margin-top:15px;font-size:1.1rem}
+footer{text-align:center;color:var(--muted);padding:25px 12px;font-size:.9rem}
+@media print{header,.tabs,button{display:none!important}.panel{display:block!important;box-shadow:none;border:0}.wrap{margin:0}}
+</style>
+</head>
+<body>
+<header><h1>CST444 – Soft Computing</h1><p>Module 2: Supervised Learning Network | Notes • Previous Year Questions • Quiz</p></header>
+<main class="wrap">
+<nav class="tabs">
+<button class="tab active" onclick="showTab('notes',this)">📘 Module 2 Notes</button>
+<button class="tab" onclick="showTab('pyq',this)">📝 Previous Year Questions</button>
+<button class="tab" onclick="showTab('quiz',this)">🎯 Interactive Quiz</button>
+</nav>
+
+<section id="notes" class="panel active">
+<h2>Module 2 – Supervised Learning Network</h2>
+<p><b>Teaching plan:</b> 7 hours | <b>Course Outcome:</b> CO2</p>
+<div class="note">This revision section follows the CST444 Module 2 syllabus: Perceptron learning and testing, ADALINE, Delta/Widrow–Hoff learning, and Back Propagation Network.</div>
+<h3>1. Perceptron Network</h3>
+<ul>
+<li>A perceptron is a supervised learning model used for classification. It computes a weighted sum of inputs and applies a threshold/activation function.</li>
+<li>Training uses labelled input patterns. The weights are adjusted when the predicted class differs from the target class.</li>
+<li>Testing uses the trained weights to classify previously unseen input patterns; weights are not updated during testing.</li>
+</ul>
+<div class="formula">net = Σ(wᵢxᵢ) + b<br>y = f(net)<br>wᵢ(new) = wᵢ(old) + η(t − y)xᵢ</div>
+<p>Here, η is the learning rate, t is the target and y is the predicted output. Bias can be treated as a weight connected to a constant input.</p>
+<h3>2. Perceptron training and testing</h3>
+<ul>
+<li>Initialize weights and bias (often to zero) and choose a learning rate.</li>
+<li>For each training pattern, calculate net input and predicted output.</li>
+<li>Compare predicted output with target; update weights and bias according to the learning rule.</li>
+<li>Repeat for the required epochs or until all training patterns are classified correctly.</li>
+<li>For testing, calculate the output using the final weights and classify the input. Do not update weights.</li>
+</ul>
+<div class="note"><b>Important limitation:</b> A single-layer perceptron can learn linearly separable patterns. It cannot learn XOR using one linear decision boundary.</div>
+<h3>3. ADALINE (Adaptive Linear Neuron)</h3>
+<ul>
+<li>ADALINE is a single-layer network that uses a linear combiner during learning.</li>
+<li>The net input is compared with the target to calculate the error.</li>
+<li>Weight updates minimize the sum/mean of squared errors. The threshold decision is applied after the linear output when classification is required.</li>
+</ul>
+<div class="formula">yᵢ = Σ(wⱼxᵢⱼ) + b<br>eᵢ = tᵢ − yᵢ<br>wⱼ(new) = wⱼ(old) + η eᵢ xᵢⱼ<br>b(new) = b(old) + η eᵢ</div>
+<h3>4. Delta Rule / Widrow–Hoff / LMS Rule</h3>
+<ul>
+<li>The Delta Rule adjusts weights in proportion to the error and the corresponding input.</li>
+<li>Widrow–Hoff learning is also called the Least Mean Squares (LMS) rule.</li>
+<li>The learning rate controls the size of each weight adjustment. A value that is too large may cause unstable learning.</li>
+<li>Mean squared error (MSE) measures average squared difference between target and linear output.</li>
+</ul>
+<div class="formula">MSE = (1/N) Σ(tᵢ − yᵢ)²</div>
+<h3>5. Back Propagation Network (BPN)</h3>
+<ul>
+<li>BPN is a multilayer feed-forward neural network trained using supervised learning.</li>
+<li>It typically contains an input layer, one or more hidden layers and an output layer.</li>
+<li><b>Forward pass:</b> inputs move layer by layer; each neuron computes net input and activation output.</li>
+<li><b>Error calculation:</b> compare the network output with the target.</li>
+<li><b>Backward pass:</b> propagate error information from output layer towards hidden layers and calculate error terms.</li>
+<li><b>Weight update:</b> adjust weights using the learning rate and calculated error terms. Repeat over training patterns and epochs.</li>
+</ul>
+<div class="formula">Output-layer error term: δₖ = (tₖ − oₖ) f′(netₖ)<br>Hidden-layer error term: δⱼ = f′(netⱼ) Σₖ(δₖ wⱼₖ)</div>
+<p>For sigmoid activation, the derivative can be expressed using the neuron's output. A differentiable activation function is needed to calculate gradients during backpropagation.</p>
+<h3>6. Perceptron vs ADALINE</h3>
+<table style="width:100%;border-collapse:collapse">
+<tr style="background:#eff6ff"><th style="text-align:left;padding:9px;border:1px solid #dbe3ef">Perceptron</th><th style="text-align:left;padding:9px;border:1px solid #dbe3ef">ADALINE</th></tr>
+<tr><td style="padding:9px;border:1px solid #dbe3ef">Uses classification output/error for weight correction.</td><td style="padding:9px;border:1px solid #dbe3ef">Uses linear combiner error for weight correction.</td></tr>
+<tr><td style="padding:9px;border:1px solid #dbe3ef">Uses perceptron learning rule.</td><td style="padding:9px;border:1px solid #dbe3ef">Uses Delta/Widrow–Hoff (LMS) rule.</td></tr>
+<tr><td style="padding:9px;border:1px solid #dbe3ef">Learns linearly separable classifications.</td><td style="padding:9px;border:1px solid #dbe3ef">Adjusts weights to minimize squared error.</td></tr>
+</table>
+<div class="note"><b>Exam focus:</b> Practise perceptron weight updates, ADALINE epoch-wise calculations, MSE calculation, BPN forward/backward pass, and the roles of δₖ and δⱼ.</div>
+</section>
+
+<section id="pyq" class="panel">
+<h2>Previous Year Questions – Module II</h2>
+<p>Questions below are transcribed from the available CST444 June 2023 university question paper and the uploaded CST444 Module-wise Question Bank. The question bank items are practice questions, not claims that they appeared in a university paper.</p>
+<div class="pyq"><span class="tag">June 2023 • Part A • 3 marks</span><p><b>Q3.</b> State the testing algorithm used in Perceptron Network.</p></div>
+<div class="pyq"><span class="tag">June 2023 • Part A • 3 marks</span><p><b>Q4.</b> List the stages involved in Backpropagation Network.</p></div>
+<div class="pyq"><span class="tag">June 2023 • Module II • 14 marks</span><p><b>Q13(a).</b> Implement AND function with binary inputs and bipolar targets using perceptron training algorithm. (8)</p><p><b>Q13(b).</b> Draw the architecture of Back propagation Network and explain the training algorithm. (6)</p><p><b>OR</b></p><p><b>Q14(a).</b> What is Adaline? Draw the model of an Adaline Network. (4)</p><p><b>Q14(b).</b> Use Adaline to train OR function with bipolar inputs and targets. Perform 2 epochs of training. (10)</p></div>
+<div class="pyq"><span class="tag">Module-wise Question Bank • Short answer</span>
+<ul><li>State the perceptron learning rule and explain weight updation.</li><li>List the steps in the perceptron training algorithm for a single-output class.</li><li>Write the testing algorithm used in a perceptron network.</li><li>What is ADALINE? Draw its architecture.</li><li>Explain the Delta Rule / Widrow–Hoff learning rule used in ADALINE.</li><li>Differentiate perceptron and ADALINE.</li><li>Explain the significance of error terms δk and δj.</li><li>Explain forward-pass and backward-pass phases.</li><li>Why is a differentiable activation function used in backpropagation?</li></ul></div>
+<div class="pyq"><span class="tag">Module-wise Question Bank • Numerical / descriptive</span>
+<ul><li>Implement AND using a perceptron with binary inputs and bipolar targets. Show weight updates.</li><li>Implement OR using a perceptron with binary inputs and bipolar targets. Perform two epochs.</li><li>Train OR using ADALINE with bipolar inputs and targets for one or two epochs.</li><li>Calculate total mean-square error for ADALINE training over multiple epochs.</li><li>Draw BPN architecture and explain initialization, forward pass, error calculation, backpropagation and weight update.</li><li>Explain propagation of error in BPN and the calculation of δk and δj.</li></ul></div>
+</section>
+
+<section id="quiz" class="panel">
+<h2>Module 2 – Self Assessment</h2>
+<p>Answer all 15 questions and select <b>Submit Quiz</b> to view your score and explanations.</p>
+<form id="quizForm">
+<div id="questions"></div>
+<button type="button" class="action" onclick="submitQuiz()">Submit Quiz</button>
+<button type="button" class="action secondary" onclick="resetQuiz()">Try Again</button>
+<div id="result" aria-live="polite"></div>
+</form>
+</section>
+</main>
+<footer><b>CST444 – Soft Computing</b><br>Department of Computer Science &amp; Engineering<br>Viswajyothi College of Engineering &amp; Technology<br><br>Designed &amp; Developed by Ms. Arsha J K</footer>
+<script>
+function showTab(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+const qs=[
+["A perceptron is primarily used for which task?","Classification","Clustering","Dimensionality reduction","Data compression",0,"A perceptron is a supervised model commonly used to classify input patterns."],
+["During perceptron training, when are weights updated?","When the predicted class differs from the target","After every correct prediction only","Only during testing","Before computing the net input",0,"The learning rule corrects the weights when the output does not match the target."],
+["Which expression represents the net input of a neuron with bias?","Σwᵢxᵢ + b","Σwᵢ + xᵢ","Σxᵢ / wᵢ","Σ(wᵢ − xᵢ)",0,"The weighted inputs are summed and the bias is added."],
+["What is the main purpose of the perceptron testing phase?","Classify inputs using trained weights","Update weights using training errors","Initialize random weights","Calculate a new learning rate",0,"Testing applies the learned weights to inputs; it does not perform weight learning."],
+["A single-layer perceptron can learn patterns that are:","Linearly separable","Always nonlinearly separable","Only continuous-valued","Unlabelled",0,"A single linear decision boundary separates linearly separable classes."],
+["ADALINE expands to:","Adaptive Linear Neuron","Automatic Digital Learning Network","Adaptive Logic Node","Artificial Linear Network",0,"ADALINE stands for Adaptive Linear Neuron."],
+["ADALINE updates weights using error computed from:","The linear combiner output","Only the final thresholded class","The input dimension","The number of epochs",0,"ADALINE uses the difference between target and linear output for learning."],
+["The Widrow–Hoff rule is also known as:","Least Mean Squares rule","Hebbian rule","Perceptron convergence rule","Winner-takes-all rule",0,"Widrow–Hoff learning is commonly called the LMS rule."],
+["In the Delta Rule, the learning rate controls:","The size of weight adjustments","The number of input neurons","The target class labels","The activation function type",0,"The learning rate scales each error-driven weight update."],
+["Mean squared error is calculated using:","The average of squared target-output differences","The sum of input weights","The average of target labels only","The largest network output",0,"MSE averages the squared difference between targets and network outputs."],
+["Which phase of BPN computes the network output from the input?","Forward pass","Backward pass","Weight initialization","Testing termination",0,"During the forward pass, signals move from input through hidden layers to output."],
+["In BPN, error information is propagated from:","Output layer towards hidden layers","Input layer directly to the target","Hidden layers towards the input only","Bias nodes towards input nodes",0,"Backpropagation sends error information backwards from output towards earlier layers."],
+["Why are differentiable activation functions useful in BPN?","They allow gradient calculation","They remove the need for weights","They guarantee zero error in one epoch","They make all outputs binary",0,"Backpropagation uses derivatives to calculate gradients for weight updates."],
+["Which error term is associated with an output neuron k?","δₖ","δⱼ only","η","b",0,"δₖ denotes the error term for an output-layer neuron k."],
+["Which statement correctly distinguishes perceptron and ADALINE learning?","ADALINE uses linear-output error for weight updates","Perceptron minimizes MSE using a linear combiner","ADALINE updates weights only during testing","Both use identical error calculations",0,"ADALINE's Delta/LMS update uses the error from the linear combiner output."]
+];
+const qbox=document.getElementById('questions');
+function render(){qbox.innerHTML=qs.map((q,i)=>`<div class="question" id="q${i}"><p>${i+1}. ${q[0]}</p>${q.slice(1,5).map((a,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}">${String.fromCharCode(65+j)}. ${a}</label>`).join('')}<div class="feedback" id="f${i}"></div></div>`).join('')}
+function submitQuiz(){let score=0,answered=0;qs.forEach((q,i)=>{const chosen=document.querySelector(`input[name="q${i}"]:checked`);const f=document.getElementById('f'+i);if(chosen){answered++;if(+chosen.value===q[5]){score++;f.className='feedback correct';f.textContent='Correct. '+q[6]}else{f.className='feedback wrong';f.textContent='Not quite. Correct answer: '+q[q[5]+1]+'. '+q[6]}}else{f.className='feedback wrong';f.textContent='Not answered. Correct answer: '+q[q[5]+1]+'. '+q[6]}});document.getElementById('result').textContent=`Your score: ${score} / ${qs.length} (${answered} answered).`;window.scrollTo({top:document.getElementById('result').getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'})}
+function resetQuiz(){document.getElementById('quizForm').reset();document.querySelectorAll('.feedback').forEach(f=>{f.textContent='';f.className='feedback'});document.getElementById('result').textContent=''}
+render();
+</script>
+</body></html>
