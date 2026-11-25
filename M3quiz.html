@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CST444 | Module 3 Quiz</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--pale:#eff6ff;--ink:#1f2937;--muted:#64748b;--line:#dbe3ef;--green:#15803d;--red:#b91c1c}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:var(--ink);font:16px/1.6 Arial,sans-serif}
+header{background:linear-gradient(120deg,#14213d,#1d4ed8);color:white;padding:30px 18px;text-align:center}header h1{margin:0;font-size:clamp(1.5rem,4vw,2.2rem)}header p{color:#dbeafe}
+.backline{background:#14213d;text-align:center;padding:8px}.backline a{color:white}.wrap{max-width:1050px;margin:24px auto;padding:0 16px}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}.tab{border:1px solid var(--line);background:white;padding:10px 17px;border-radius:9px;cursor:pointer;font-weight:700;color:var(--navy)}.tab.active{background:var(--blue);color:white}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px 20px #0f172a0a}.panel.active{display:block}
+h2{color:var(--navy);margin-top:0}h3{color:#1d4ed8;margin-bottom:6px}.note{background:var(--pale);border-left:4px solid var(--blue);padding:12px 15px;border-radius:7px;margin:14px 0}
+.formula{background:#f8fafc;border:1px solid var(--line);padding:10px 13px;border-radius:7px;font-family:Consolas,monospace;overflow-x:auto}
+.pyq{border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0}.tag{display:inline-block;background:#e0e7ff;color:#1e40af;padding:2px 8px;border-radius:20px;font-size:.82rem;font-weight:bold}
+.question{border-bottom:1px solid var(--line);padding:16px 0}.question p{font-weight:700;margin:0 0 10px}.option{display:block;padding:8px 10px;margin:6px 0;border:1px solid var(--line);border-radius:8px;cursor:pointer}.option input{margin-right:8px}
+.feedback{font-size:.94rem;margin-top:8px}.correct{color:var(--green)}.wrong{color:var(--red)}button.action{background:var(--blue);color:white;border:0;padding:11px 18px;border-radius:8px;font-weight:bold;cursor:pointer;margin:12px 8px 0 0}button.secondary{background:#e2e8f0;color:var(--navy)}#result{font-weight:bold;margin-top:15px;font-size:1.1rem}
+footer{text-align:center;color:var(--muted);padding:25px 12px;font-size:.9rem}@media print{header,.backline,.tabs,button{display:none!important}.panel{display:block!important;box-shadow:none;border:0}}
+</style></head><body>
+<div class="backline"><a href="module3.html">← Back to Module 3 Learning Page</a></div>
+<header><h1>CST444 – Soft Computing</h1><p>Module 3: Fuzzy Logic &amp; Defuzzification | Notes • Previous Year Questions • Quiz</p></header>
+<main class="wrap"><nav class="tabs">
+<button class="tab active" onclick="showTab('notes',this)">📘 Module 3 Notes</button><button class="tab" onclick="showTab('pyq',this)">📝 Previous Year Questions</button><button class="tab" onclick="showTab('quiz',this)">🎯 Interactive Quiz</button>
+</nav>
+<section id="notes" class="panel active">
+<h2>Module 3 – Fuzzy Logic &amp; Defuzzification</h2><p><b>Teaching plan:</b> 8 hours | <b>Course Outcome:</b> CO3</p>
+<div class="note">This page follows the CST444 Module 3 syllabus: fuzzy sets, properties and operations; membership functions and fuzzification; membership-value assignment; fuzzy relations; propositions and implications; λ-cuts; and defuzzification.</div>
+<h3>1. Fuzzy Sets and Membership Functions</h3>
+<ul><li>A fuzzy set A on universe X is described by membership function μA(x), assigning each element a degree from 0 to 1.</li><li>μA(x)=0 means no membership; μA(x)=1 means full membership; intermediate values indicate partial membership.</li><li>A crisp set permits only 0 or 1; a fuzzy set permits gradual membership.</li><li>Fuzzification converts a crisp input into membership values in fuzzy sets.</li></ul>
+<div class="formula">A = { (x, μA(x)) | x ∈ X }, where 0 ≤ μA(x) ≤ 1</div>
+<h3>2. Support, Core and Boundary</h3>
+<ul><li><b>Support:</b> elements for which μA(x) &gt; 0.</li><li><b>Core:</b> elements for which μA(x) = 1.</li><li><b>Boundary:</b> elements for which 0 &lt; μA(x) &lt; 1.</li></ul>
+<h3>3. Basic Fuzzy Set Operations</h3>
+<div class="formula">Complement: μĀ(x) = 1 − μA(x)<br>Union: μA∪B(x) = max(μA(x), μB(x))<br>Intersection: μA∩B(x) = min(μA(x), μB(x))</div>
+<p>Apply these operations element by element for sets defined on the same universe.</p>
+<h3>4. Algebraic and Bounded Operations</h3>
+<div class="formula">Algebraic product: μA·B = μA × μB<br>Algebraic sum: μA⊕B = μA + μB − (μA × μB)<br>Bounded sum: μA⊞B = min(1, μA + μB)<br>Bounded difference: μA⊖B = max(0, μA + μB − 1)</div>
+<div class="note"><b>Example:</b> If μA=0.4 and μB=0.7: intersection=0.4, union=0.7, complement of A=0.6, algebraic product=0.28, algebraic sum=0.82, bounded sum=1 and bounded difference=0.1.</div>
+<h3>5. Membership-Value Assignment</h3>
+<ul><li><b>Intuition:</b> assign values using experience or judgement about the problem.</li><li><b>Inference:</b> derive values from available facts, rules or relationships.</li><li><b>Rank ordering:</b> rank elements by relative importance or degree, then assign membership values based on that order.</li></ul>
+<h3>6. Fuzzy Relations and Cartesian Product</h3>
+<ul><li>A fuzzy relation represents the degree of association between elements of two or more universes.</li><li>The Cartesian product of fuzzy sets A and B can be represented as a relation R on X × Y.</li><li>For the standard min-based Cartesian product, μR(x,y)=min(μA(x), μB(y)).</li></ul>
+<h3>7. Composition of Fuzzy Relations</h3>
+<div class="formula">Max–min: μR∘S(x,z) = max over y [ min(μR(x,y), μS(y,z)) ]<br>Max–product: μR∘S(x,z) = max over y [ μR(x,y) × μS(y,z) ]</div>
+<p>For relation R between X and Y and S between Y and Z, composition produces a relation between X and Z.</p>
+<h3>8. Fuzzy Tolerance and Equivalence Relations</h3>
+<ul><li><b>Reflexive:</b> every element is fully related to itself.</li><li><b>Symmetric:</b> μR(x,y)=μR(y,x).</li><li><b>Max–min transitive:</b> μR(x,z) ≥ max over y min(μR(x,y), μR(y,z)).</li><li>A fuzzy tolerance relation is reflexive and symmetric. A fuzzy equivalence relation also satisfies the required transitivity property.</li></ul>
+<h3>9. Fuzzy Propositions and Implications</h3>
+<ul><li>A fuzzy proposition is a statement involving a linguistic variable and fuzzy value, e.g. “temperature is warm”.</li><li>A fuzzy implication expresses a fuzzy IF–THEN relationship between propositions.</li><li>Fuzzy rules represent approximate reasoning where boundaries are not sharply defined.</li></ul>
+<h3>10. λ-Cuts and Strong λ-Cuts</h3>
+<div class="formula">λ-cut: Aλ = {x ∈ X | μA(x) ≥ λ}<br>Strong λ-cut: Aλ⁺ = {x ∈ X | μA(x) &gt; λ}</div>
+<p>A λ-cut converts a fuzzy set into a crisp set by selecting elements whose membership is at least the threshold. A strong λ-cut uses a strict greater-than comparison.</p>
+<h3>11. Defuzzification</h3>
+<p>Defuzzification converts the fuzzy output of a fuzzy system into a crisp numerical value for a final decision or control action.</p>
+<ul><li><b>Centroid / centre of area:</b> centre of gravity of the aggregated output membership function.</li><li><b>Bisector of area:</b> divides the area under the membership function into two equal parts.</li><li><b>Mean of maxima:</b> averages the values at which membership reaches its maximum.</li><li><b>Smallest / largest of maxima:</b> selects the smallest or largest value among those with maximum membership.</li><li><b>Weighted average:</b> combines output values using their weights, commonly with suitable singleton consequents.</li></ul>
+<div class="note"><b>Exam focus:</b> Practise fuzzy-set operations, membership-function sketches, Cartesian products, max–min and max–product composition, λ-cuts and defuzzification methods.</div>
+</section>
+<section id="pyq" class="panel"><h2>Previous Year Questions – Module III</h2>
+<p>These are the questions verified in the uploaded CST444 June 2023 paper. The question-bank items are clearly separated as practice questions.</p>
+<div class="pyq"><span class="tag">June 2023 • Part A • 3 marks</span><p><b>Q5.</b> Using your own intuition, plot the Fuzzy membership function for the “Age of people”.</p></div>
+<div class="pyq"><span class="tag">June 2023 • Part A • 3 marks</span><p><b>Q6.</b> Let A={(x1,0.5), (x2,0.1), (x3,0.9)} and B={(x1,0.4), (x2,0.4), (x3,0.5)}. Find intersection, union and complement of both the fuzzy sets.</p></div>
+<div class="pyq"><span class="tag">June 2023 • Module III • Part B</span><p><b>Q15(a).</b> Using intuition and your own definition of the universe of discourse, plot fuzzy membership functions for the following variable: Liquid level in the tank – (a) Very small (b) Small (c) Empty (d) Full (e) Very full. (5 marks)</p><p><i>Only Q15(a) is reproduced because the remaining Module III question text was not available in the extracted source.</i></p></div>
+<div class="pyq"><span class="tag">Module-wise Question Bank • Short-answer practice</span><ul>
+<li>Define a fuzzy set and membership function.</li><li>List and explain basic properties of fuzzy sets.</li><li>Explain support, core and boundary with a membership-function sketch.</li><li>Differentiate crisp sets and fuzzy sets.</li><li>Explain union, intersection and complement of fuzzy sets.</li><li>Define algebraic sum, algebraic product, bounded sum and bounded difference.</li><li>Differentiate intuition-based, inference-based and rank-ordering membership assignment.</li><li>Define fuzzy relation and Cartesian product.</li><li>Define max–min and max–product composition.</li><li>What is a λ-cut? Distinguish λ-cut and strong λ-cut.</li><li>Define fuzzy proposition and fuzzy implication.</li><li>What is defuzzification? List commonly used methods.</li></ul></div>
+<div class="pyq"><span class="tag">Module-wise Question Bank • Numerical / descriptive practice</span><ul>
+<li>For A={(x1,0.7),(x2,0.3),(x3,0.9)} and B={(x1,0.6),(x2,0.4),(x3,0.8)}, calculate intersection, union and complements.</li>
+<li>For A={0.2/1,0.3/2,0.4/3,0.5/4} and B={0.1/1,0.2/2,0.2/3,1/4}, calculate algebraic sum, algebraic product, bounded sum and bounded difference.</li>
+<li>Construct membership functions for vehicle speed, room temperature, age of people or tank liquid level.</li>
+<li>Given fuzzy sets A and B, find R=A×B. Given another relation S, calculate R∘S using max–min and max–product composition.</li>
+<li>Determine λ-cuts and strong λ-cuts for a given fuzzy set.</li><li>Explain and compare commonly used defuzzification methods.</li></ul></div>
+</section>
+<section id="quiz" class="panel"><h2>Module 3 – Self Assessment</h2><p>Answer all 15 questions. Select <b>Submit Quiz</b> to view your score and explanations.</p>
+<form id="quizForm"><div id="questions"></div><button type="button" class="action" onclick="submitQuiz()">Submit Quiz</button><button type="button" class="action secondary" onclick="resetQuiz()">Try Again</button><div id="result" aria-live="polite"></div></form></section>
+</main>
+<footer><b>CST444 – Soft Computing</b><br>Department of Computer Science &amp; Engineering<br>Viswajyothi College of Engineering &amp; Technology<br><br>Designed &amp; Developed by Ms. Arsha J K</footer>
+<script>
+function showTab(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+const qs=[
+["A fuzzy membership function assigns each element a value in which range?","0 to 1","−1 to 1","0 to 100 only","Any real number",0,"Fuzzy membership grades range from 0 (no membership) to 1 (full membership)."],
+["For a fuzzy set A, an element belongs to the core when its membership value is:","1","0","Between 0 and 1, excluding 1","Less than 0",0,"The core contains elements whose membership grade is exactly 1."],
+["The support of a fuzzy set contains elements for which:","μA(x) > 0","μA(x) = 0","μA(x) = 1 only","μA(x) < 0",0,"Support includes every element with a positive membership grade."],
+["If μA(x)=0.3, what is the complement membership value?","0.7","0.3","1.3","0",0,"The standard complement is 1 − μA(x), so 1 − 0.3 = 0.7."],
+["If μA(x)=0.4 and μB(x)=0.8, the standard intersection value is:","0.4","0.8","1.2","0.32",0,"Standard fuzzy intersection uses the minimum: min(0.4, 0.8)=0.4."],
+["If μA(x)=0.4 and μB(x)=0.8, the standard union value is:","0.8","0.4","0.32","0.2",0,"Standard fuzzy union uses the maximum: max(0.4, 0.8)=0.8."],
+["For membership values 0.5 and 0.6, the algebraic product is:","0.30","0.80","1.00","0.10",0,"Algebraic product multiplies the grades: 0.5 × 0.6 = 0.30."],
+["For membership values 0.5 and 0.6, the algebraic sum is:","0.80","0.30","1.10","0.50",0,"Algebraic sum is a+b−ab = 0.5+0.6−0.3 = 0.8."],
+["For membership values 0.7 and 0.6, the bounded sum is:","1.0","0.42","0.88","0.7",0,"Bounded sum is min(1, 0.7+0.6)=1."],
+["For membership values 0.2 and 0.5, bounded difference max(0,a+b−1) is:","0","0.7","0.1","0.3",0,"max(0, 0.2+0.5−1)=max(0,−0.3)=0."],
+["Which method assigns membership grades using experience and judgement?","Intuition-based assignment","Rank-ordering assignment","Inference-based assignment","Defuzzification",0,"Intuition-based assignment uses human judgement or experience about the concept."],
+["In a standard min-based Cartesian product of fuzzy sets A and B, the relation grade is:","min(μA(x), μB(y))","max(μA(x), μB(y))","μA(x) × μB(y) only","1 − μA(x)",0,"The standard min-based fuzzy Cartesian product takes the minimum of the two membership grades."],
+["In max–min composition, what operation is performed first for each intermediate element?","Minimum","Maximum","Addition","Complement",0,"For each intermediate element, take the minimum of the paired relation grades, then take the maximum across intermediates."],
+["A strong λ-cut contains elements satisfying:","μA(x) > λ","μA(x) ≥ λ","μA(x) = λ only","μA(x) < λ",0,"A strong λ-cut uses a strict greater-than comparison."],
+["What is the main purpose of defuzzification?","Convert a fuzzy output into a crisp value","Convert crisp inputs into fuzzy grades","Create the universe of discourse","Assign training labels",0,"Defuzzification converts the fuzzy result into a crisp numerical output for a decision or action."]
+];
+const qbox=document.getElementById('questions');
+function render(){qbox.innerHTML=qs.map((q,i)=>`<div class="question"><p>${i+1}. ${q[0]}</p>${q.slice(1,5).map((a,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}">${String.fromCharCode(65+j)}. ${a}</label>`).join('')}<div class="feedback" id="f${i}"></div></div>`).join('')}
+function submitQuiz(){let score=0,answered=0;qs.forEach((q,i)=>{const c=document.querySelector(`input[name="q${i}"]:checked`),f=document.getElementById('f'+i);if(c){answered++;if(+c.value===q[5]){score++;f.className='feedback correct';f.textContent='Correct. '+q[6]}else{f.className='feedback wrong';f.textContent='Not quite. Correct answer: '+q[q[5]+1]+'. '+q[6]}}else{f.className='feedback wrong';f.textContent='Not answered. Correct answer: '+q[q[5]+1]+'. '+q[6]}});document.getElementById('result').textContent=`Your score: ${score} / ${qs.length} (${answered} answered).`;window.scrollTo({top:document.getElementById('result').getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'})}
+function resetQuiz(){document.getElementById('quizForm').reset();document.querySelectorAll('.feedback').forEach(f=>{f.textContent='';f.className='feedback'});document.getElementById('result').textContent=''}
+render();
+</script></body></html>
