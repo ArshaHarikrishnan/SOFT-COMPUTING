@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CST444 | Module 4 Quiz</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--pale:#eff6ff;--ink:#1f2937;--muted:#64748b;--line:#dbe3ef;--green:#15803d;--red:#b91c1c}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:var(--ink);font:16px/1.6 Arial,sans-serif}
+.backline{background:#14213d;text-align:center;padding:8px}.backline a{color:white}
+header{background:linear-gradient(120deg,#14213d,#1d4ed8);color:white;padding:30px 18px;text-align:center}header h1{margin:0;font-size:clamp(1.5rem,4vw,2.2rem)}header p{color:#dbeafe}
+.wrap{max-width:1050px;margin:24px auto;padding:0 16px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:white;padding:10px 17px;border-radius:9px;cursor:pointer;font-weight:700;color:var(--navy)}.tab.active{background:var(--blue);color:white}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px 20px #0f172a0a}.panel.active{display:block}
+h2{color:var(--navy);margin-top:0}h3{color:#1d4ed8;margin-bottom:6px}.note{background:var(--pale);border-left:4px solid var(--blue);padding:12px 15px;border-radius:7px;margin:14px 0}
+.formula{background:#f8fafc;border:1px solid var(--line);padding:10px 13px;border-radius:7px;font-family:Consolas,monospace;overflow-x:auto}
+.pyq{border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0}.tag{display:inline-block;background:#e0e7ff;color:#1e40af;padding:2px 8px;border-radius:20px;font-size:.82rem;font-weight:bold}
+.question{border-bottom:1px solid var(--line);padding:16px 0}.question p{font-weight:700;margin:0 0 10px}.option{display:block;padding:8px 10px;margin:6px 0;border:1px solid var(--line);border-radius:8px;cursor:pointer}.option input{margin-right:8px}
+.feedback{font-size:.94rem;margin-top:8px}.correct{color:var(--green)}.wrong{color:var(--red)}
+button.action{background:var(--blue);color:white;border:0;padding:11px 18px;border-radius:8px;font-weight:bold;cursor:pointer;margin:12px 8px 0 0}button.secondary{background:#e2e8f0;color:var(--navy)}#result{font-weight:bold;margin-top:15px;font-size:1.1rem}
+footer{text-align:center;color:var(--muted);padding:25px 12px;font-size:.9rem}
+@media print{header,.backline,.tabs,button{display:none!important}.panel{display:block!important;box-shadow:none;border:0}}
+</style></head><body>
+<div class="backline"><a href="module4.html">← Back to Module 4 Learning Page</a></div>
+<header><h1>CST444 – Soft Computing</h1><p>Module 4: Fuzzy Inference System &amp; Genetic Algorithm | Notes • Previous Year Questions • Quiz</p></header>
+<main class="wrap"><nav class="tabs">
+<button class="tab active" onclick="showTab('notes',this)">📘 Module 4 Notes</button>
+<button class="tab" onclick="showTab('pyq',this)">📝 Previous Year Questions</button>
+<button class="tab" onclick="showTab('quiz',this)">🎯 Interactive Quiz</button>
+</nav>
+<section id="notes" class="panel active">
+<h2>Module 4 – Fuzzy Inference System &amp; Genetic Algorithm</h2>
+<p><b>Teaching plan:</b> 6 hours | <b>Course Outcome:</b> CO4</p>
+<div class="note">Syllabus coverage: Mamdani and Sugeno FIS; fuzzy logic controller; genetic algorithm concepts; chromosome coding/encoding; selection, crossover and mutation operators; stopping conditions.</div>
+<h3>1. Fuzzy Inference System (FIS)</h3>
+<p>A Fuzzy Inference System maps inputs to outputs using fuzzy sets, linguistic rules and an inference mechanism.</p>
+<ul><li><b>Fuzzification:</b> converts crisp input values into membership grades.</li><li><b>Database:</b> stores definitions and parameters of membership functions.</li><li><b>Rule base:</b> stores linguistic IF–THEN rules.</li><li><b>Inference engine:</b> evaluates rules and combines their results.</li><li><b>Defuzzification:</b> converts the aggregated fuzzy output into a crisp value when required.</li></ul>
+<div class="formula">Crisp inputs → Fuzzification → Inference engine + Rule base/Database → Defuzzification → Crisp output</div>
+<h3>2. Mamdani FIS</h3>
+<ul><li>Rule consequents are fuzzy sets.</li><li>Antecedent membership values are evaluated using fuzzy operators such as AND (commonly min) and OR (commonly max).</li><li>Rule outputs are combined using an aggregation operator, often max.</li><li>The aggregated fuzzy output is converted to a crisp value using a defuzzification method such as centroid.</li></ul>
+<p>Example rule: IF temperature is High AND humidity is High THEN fan speed is Fast.</p>
+<h3>3. Sugeno FIS</h3>
+<ul><li>Rule consequents are constants (zero-order Sugeno) or functions of the inputs (first-order Sugeno).</li><li>Each rule produces a crisp consequent value or function, weighted by its firing strength.</li><li>The final output is commonly obtained using a weighted average.</li></ul>
+<div class="formula">Rule i: IF x is Ai AND y is Bi THEN zi = fi(x,y)<br>Output = Σ(wi zi) / Σwi</div>
+<h3>4. Mamdani vs Sugeno</h3>
+<table><tr><th>Feature</th><th>Mamdani</th><th>Sugeno</th></tr>
+<tr><td>Consequent</td><td>Fuzzy set</td><td>Constant or mathematical function</td></tr>
+<tr><td>Output before final stage</td><td>Aggregated fuzzy set</td><td>Weighted crisp rule outputs</td></tr>
+<tr><td>Final output</td><td>Requires defuzzification</td><td>Usually weighted average</td></tr>
+<tr><td>Typical strength</td><td>Intuitive linguistic rule representation</td><td>Computationally efficient and convenient for mathematical optimisation</td></tr></table>
+<h3>5. Fuzzy Logic Controller (FLC)</h3>
+<p>An FLC uses fuzzy logic to control a system when an exact mathematical model may be difficult to formulate.</p>
+<ul><li>Define input and output variables and their universes of discourse.</li><li>Choose linguistic terms and membership functions.</li><li>Construct the rule base using expert knowledge.</li><li>Fuzzify sensor/input values and evaluate the rules.</li><li>Aggregate the rule outputs and defuzzify to obtain the control action.</li></ul>
+<div class="note"><b>Illustrative rule:</b> IF temperature is High AND humidity is Low THEN fan speed is Fast. The actual controller requires defined membership functions and a complete rule base.</div>
+<h3>6. Genetic Algorithm (GA)</h3>
+<p>A Genetic Algorithm is a population-based search and optimisation method inspired by natural selection and evolution. Candidate solutions are represented as chromosomes.</p>
+<ol><li>Encode candidate solutions and initialise a population.</li><li>Evaluate the fitness of each chromosome.</li><li>Select parent chromosomes according to a selection strategy.</li><li>Apply crossover to create offspring.</li><li>Apply mutation to introduce variation.</li><li>Form the next population and evaluate fitness.</li><li>Repeat until a stopping condition is met; return the best solution found.</li></ol>
+<h3>7. Chromosome Encoding</h3>
+<ul><li><b>Binary encoding:</b> chromosome is a string of 0s and 1s.</li><li><b>Value encoding:</b> genes contain values such as real numbers, characters or other problem-specific values.</li><li><b>Permutation encoding:</b> chromosome is an ordering of items; useful for ordering or route problems.</li></ul>
+<h3>8. Selection Operators</h3>
+<ul><li><b>Roulette-wheel selection:</b> selection probability is proportional to fitness (for a maximisation problem with non-negative fitness values).</li><li><b>Stochastic universal sampling:</b> uses multiple evenly spaced pointers on the cumulative fitness scale to select a set of parents with lower sampling variance.</li><li><b>Tournament selection:</b> randomly choose a group of competitors and select the best among them; tournament size controls selection pressure.</li><li><b>Rank-based selection:</b> assigns selection probabilities based on fitness rank rather than raw fitness magnitude.</li></ul>
+<div class="formula">Roulette probability: pi = fi / Σ fj</div>
+<h3>9. Crossover Operators</h3>
+<ul><li><b>Single-point:</b> choose one cut point and exchange the tails of two parents.</li><li><b>Two-point:</b> choose two cut points and exchange the segment between them.</li><li><b>Uniform:</b> choose each gene from either parent according to a mask or probability.</li><li>Other methods in the question bank include three-parent, shuffle and precedence-preservative crossover; the operator must suit the chromosome representation.</li></ul>
+<h3>10. Mutation Operators</h3>
+<ul><li><b>Bit-flip:</b> change a binary gene from 0 to 1 or 1 to 0.</li><li><b>Random resetting:</b> replace a selected value gene with another valid value.</li><li><b>Swap:</b> exchange the positions of two genes in a permutation.</li><li><b>Inversion:</b> reverse the order of genes in a selected permutation segment.</li></ul>
+<p>Mutation helps maintain population diversity and reduces premature convergence. Mutation rates should be chosen carefully.</p>
+<h3>11. Stopping Conditions</h3>
+<ul><li>Maximum number of generations reached.</li><li>A required fitness threshold or acceptable solution quality is achieved.</li><li>Population has converged or fitness improvement has become negligible for a specified period.</li><li>A computational time or evaluation budget is exhausted.</li></ul>
+<div class="note"><b>Exam focus:</b> Draw and compare Mamdani/Sugeno architectures; explain FLC; trace GA steps; solve roulette-wheel selection; demonstrate encoding, crossover and mutation; state stopping conditions.</div>
+</section>
+<section id="pyq" class="panel"><h2>Previous Year Questions – Module IV</h2>
+<p>The questions below are transcribed from the uploaded CST444 university papers. Paper/session labels and marks are retained where available.</p>
+<div class="pyq"><span class="tag">June 2023 • Part A • 3 marks</span><p><b>Q7.</b> Draw the flow chart and explain the steps of Genetic Algorithm.</p></div>
+<div class="pyq"><span class="tag">June 2023 • Part A • 3 marks</span><p><b>Q8.</b> Explain any 3 mutation techniques with example.</p></div>
+<div class="pyq"><span class="tag">October 2023 • Part A • 3 marks</span><p><b>Q7.</b> Compare and contrast traditional algorithm and genetic algorithm.</p></div>
+<div class="pyq"><span class="tag">October 2023 • Part A • 3 marks</span><p><b>Q8.</b> Explain Stochastic Universal Sampling with an example.</p></div>
+<div class="pyq"><span class="tag">October 2023 • Module IV • Part B</span><p><b>Q17(a).</b> With the help of necessary block diagrams, compare Mamdani and Sugeno Fuzzy Inference Systems. (9)</p><p><b>Q17(b).</b> Differentiate between value encoding and permutation encoding. (5)</p><p><b>OR</b></p><p><b>Q18(a).</b> With the help of examples, explain the various crossover techniques employed in genetic algorithms. (10)</p><p><b>Q18(b).</b> Mention the stopping condition for genetic algorithm flow. (4)</p></div>
+<div class="pyq"><span class="tag">August 2024 • Module IV • Part B</span><p><b>Q17(a).</b> With examples, explain the various crossover techniques employed in Genetic Algorithms. (10)</p><p><b>Q17(b).</b> Illustrate the steps that outline the Basic Genetic Algorithm. (4)</p><p><b>OR</b></p><p><b>Q18(a).</b> With the help of necessary block diagrams, compare Mamdani and Sugeno Fuzzy Inference Systems. (10)</p><p><b>Q18(b).</b> Explain different types of Encoding Techniques. (4)</p></div>
+<div class="pyq"><span class="tag">Module-wise Question Bank • Practice</span><ul>
+<li>Draw and explain FIS architecture and working: fuzzification, rule base, database, inference engine and defuzzification.</li>
+<li>Explain Mamdani FIS and Sugeno FIS with suitable examples and block diagrams.</li>
+<li>Compare Mamdani and Sugeno FIS with respect to rule consequent, aggregation, output and defuzzification.</li>
+<li>Design a Mamdani fuzzy controller for fan speed based on temperature and humidity.</li>
+<li>Given a Mamdani fan controller with rules (1) T High AND H Low → Fast; (2) T Medium AND H Medium → Normal; (3) T Low OR H High → Slow, and the supplied membership grades, determine the fuzzy output using min-max.</li>
+<li>Explain roulette-wheel, tournament, stochastic universal sampling and rank-based selection.</li>
+<li>Explain single-point, two-point and uniform crossover with parent/offspring examples.</li>
+<li>Explain mutation for binary, value and permutation representations.</li>
+<li>Using roulette-wheel selection, maximise f(x)=x² over {0,1,2,…,31}; show encoding, fitness, selection probabilities, crossover and mutation.</li>
+<li>Explain GA stopping conditions, including maximum generations, fitness threshold and population convergence.</li>
+</ul></div>
+</section>
+<section id="quiz" class="panel"><h2>Module 4 – Self Assessment</h2><p>Answer all 15 questions and select <b>Submit Quiz</b> to view your score and explanations.</p>
+<form id="quizForm"><div id="questions"></div><button type="button" class="action" onclick="submitQuiz()">Submit Quiz</button><button type="button" class="action secondary" onclick="resetQuiz()">Try Again</button><div id="result" aria-live="polite"></div></form></section>
+</main>
+<footer><b>CST444 – Soft Computing</b><br>Department of Computer Science &amp; Engineering<br>Viswajyothi College of Engineering &amp; Technology<br><br>Designed &amp; Developed by Ms. Arsha J K</footer>
+<script>
+function showTab(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+const qs=[
+["Which component converts crisp input values into membership grades?","Fuzzification","Defuzzification","Selection","Mutation",0,"Fuzzification maps crisp inputs to fuzzy membership grades."],
+["Which is a component of a typical FIS?","Rule base","Chromosome population","Crossover pool","Mutation matrix",0,"A FIS includes a rule base, database, fuzzification, inference and output processing."],
+["In a Mamdani FIS, the rule consequent is generally represented by:","A fuzzy set","Only a constant","Only a polynomial","A binary chromosome",0,"Mamdani rules have fuzzy-set consequents."],
+["In a zero-order Sugeno FIS, the consequent is:","A constant","A fuzzy output set","A permutation","A membership boundary",0,"Zero-order Sugeno uses constant rule consequents."],
+["Which output method is commonly used in a Sugeno FIS?","Weighted average","Centroid of an aggregated fuzzy set only","Bit flipping","Tournament selection",0,"Sugeno combines rule outputs using a weighted average."],
+["What is the main purpose of a fuzzy logic controller?","Use fuzzy rules to determine a control action","Sort chromosomes by length","Convert binary values to decimal only","Train a perceptron",0,"An FLC uses fuzzy inputs, rules and inference to produce a control output."],
+["What is a chromosome in a genetic algorithm?","Encoded representation of a candidate solution","A fuzzy membership function","A stopping threshold only","A defuzzification method",0,"A chromosome encodes one candidate solution."],
+["In roulette-wheel selection, the probability of selecting an individual is usually proportional to its:","Fitness","Chromosome length only","Mutation rate","Generation number",0,"For non-negative fitness in a maximisation setting, probability is fitness divided by total fitness."],
+["Stochastic universal sampling uses:","Multiple evenly spaced pointers","Only the least-fit individual","A single random mutation","A fuzzy centroid",0,"SUS uses evenly spaced pointers on the cumulative selection scale."],
+["In tournament selection, tournament size refers to:","Number of competitors sampled for a tournament","Number of genes in a chromosome","Number of generations","Number of crossover points",0,"Tournament size is the number of individuals competing in each selection event."],
+["Which encoding is most naturally suited to a route that must visit each city once?","Permutation encoding","Binary encoding only","Real-value encoding only","Fuzzy encoding",0,"A permutation represents an ordering of cities or items."],
+["In single-point crossover, parents exchange:","The chromosome portions after one selected cut point","Every gene independently","Only the first gene","Their fitness values",0,"A single cut divides each parent; the tails are exchanged to form offspring."],
+["Which mutation changes a binary 0 to 1 or 1 to 0?","Bit-flip mutation","Swap mutation","Inversion mutation","Random route rotation",0,"Bit-flip mutation toggles a selected binary gene."],
+["Which mutation operator reverses the order of genes in a selected segment?","Inversion","Bit-flip","Random resetting","Roulette-wheel",0,"Inversion reverses a selected segment, typically in permutation representations."],
+["Which is a valid stopping condition for a genetic algorithm?","Maximum generations reached","Crossover has occurred once","At least one chromosome exists","Fitness values are stored",0,"A GA can stop after a preset maximum number of generations, among other criteria."]
+];
+const qbox=document.getElementById('questions');
+function render(){qbox.innerHTML=qs.map((q,i)=>`<div class="question"><p>${i+1}. ${q[0]}</p>${q.slice(1,5).map((a,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}">${String.fromCharCode(65+j)}. ${a}</label>`).join('')}<div class="feedback" id="f${i}"></div></div>`).join('')}
+function submitQuiz(){let score=0,answered=0;qs.forEach((q,i)=>{const c=document.querySelector(`input[name="q${i}"]:checked`),f=document.getElementById('f'+i);if(c){answered++;if(+c.value===q[5]){score++;f.className='feedback correct';f.textContent='Correct. '+q[6]}else{f.className='feedback wrong';f.textContent='Not quite. Correct answer: '+q[q[5]+1]+'. '+q[6]}}else{f.className='feedback wrong';f.textContent='Not answered. Correct answer: '+q[q[5]+1]+'. '+q[6]}});document.getElementById('result').textContent=`Your score: ${score} / ${qs.length} (${answered} answered).`;window.scrollTo({top:document.getElementById('result').getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'})}
+function resetQuiz(){document.getElementById('quizForm').reset();document.querySelectorAll('.feedback').forEach(f=>{f.textContent='';f.className='feedback'});document.getElementById('result').textContent=''}
+render();
+</script></body></html>
