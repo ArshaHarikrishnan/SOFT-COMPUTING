@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CST444 | Module 5 Quiz</title>
+<style>
+:root{--navy:#14213d;--blue:#2563eb;--pale:#eff6ff;--ink:#1f2937;--muted:#64748b;--line:#dbe3ef;--green:#15803d;--red:#b91c1c}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:var(--ink);font:16px/1.6 Arial,sans-serif}
+.backline{background:#14213d;text-align:center;padding:8px}.backline a{color:white}
+header{background:linear-gradient(120deg,#14213d,#1d4ed8);color:white;padding:30px 18px;text-align:center}header h1{margin:0;font-size:clamp(1.5rem,4vw,2.2rem)}header p{color:#dbeafe}
+.wrap{max-width:1050px;margin:24px auto;padding:0 16px}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:white;padding:10px 17px;border-radius:9px;cursor:pointer;font-weight:700;color:var(--navy)}.tab.active{background:var(--blue);color:white}
+.panel{display:none;background:white;border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:0 5px 20px #0f172a0a}.panel.active{display:block}
+h2{color:var(--navy);margin-top:0}h3{color:#1d4ed8;margin-bottom:6px}.note{background:var(--pale);border-left:4px solid var(--blue);padding:12px 15px;border-radius:7px;margin:14px 0}
+.formula{background:#f8fafc;border:1px solid var(--line);padding:10px 13px;border-radius:7px;font-family:Consolas,monospace;overflow-x:auto}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid var(--line);padding:9px;text-align:left;vertical-align:top}th{background:#eff6ff}
+.pyq{border:1px solid var(--line);border-radius:10px;padding:14px;margin:12px 0}.tag{display:inline-block;background:#e0e7ff;color:#1e40af;padding:2px 8px;border-radius:20px;font-size:.82rem;font-weight:bold}
+.question{border-bottom:1px solid var(--line);padding:16px 0}.question p{font-weight:700;margin:0 0 10px}.option{display:block;padding:8px 10px;margin:6px 0;border:1px solid var(--line);border-radius:8px;cursor:pointer}.option input{margin-right:8px}
+.feedback{font-size:.94rem;margin-top:8px}.correct{color:var(--green)}.wrong{color:var(--red)}
+button.action{background:var(--blue);color:white;border:0;padding:11px 18px;border-radius:8px;font-weight:bold;cursor:pointer;margin:12px 8px 0 0}button.secondary{background:#e2e8f0;color:var(--navy)}#result{font-weight:bold;margin-top:15px;font-size:1.1rem}
+footer{text-align:center;color:var(--muted);padding:25px 12px;font-size:.9rem}
+@media print{header,.backline,.tabs,button{display:none!important}.panel{display:block!important;box-shadow:none;border:0}}
+</style></head><body>
+<div class="backline"><a href="module5.html">← Back to Module 5 Learning Page</a></div>
+<header><h1>CST444 – Soft Computing</h1><p>Module 5: Multi-Objective Optimization &amp; Hybrid System | Notes • Previous Year Questions • Quiz</p></header>
+<main class="wrap"><nav class="tabs">
+<button class="tab active" onclick="showTab('notes',this)">📘 Module 5 Notes</button>
+<button class="tab" onclick="showTab('pyq',this)">📝 Previous Year Questions</button>
+<button class="tab" onclick="showTab('quiz',this)">🎯 Interactive Quiz</button>
+</nav>
+<section id="notes" class="panel active">
+<h2>Module 5 – Multi-Objective Optimization &amp; Hybrid System</h2>
+<p><b>Teaching plan:</b> 8 hours | <b>Course Outcome:</b> CO5</p>
+<div class="note">Syllabus/question-bank coverage: MOOP; linear/nonlinear and convex/non-convex problems; objectives and Pareto principles; dominance, Pareto optimality and dominance-relation properties; non-dominated set; optimality conditions; neuro-fuzzy and genetic-neuro hybrid systems.</div>
+<h3>1. Multi-Objective Optimization Problem (MOOP)</h3>
+<p>A MOOP involves optimizing two or more objective functions simultaneously, subject to decision-variable constraints. Objectives may conflict, so one solution may not be best for every objective.</p>
+<div class="formula">Minimise / Maximise  F(x) = [f₁(x), f₂(x), …, fₖ(x)]ᵀ<br>Subject to: gᵢ(x) ≤ 0, i = 1,…,m;  hⱼ(x) = 0, j = 1,…,p<br>x ∈ X (feasible decision space)</div>
+<p><b>Example:</b> Design a vehicle to minimise cost and fuel consumption while satisfying safety and performance constraints.</p>
+<h3>2. Classification of MOOP</h3>
+<table><tr><th>Classification</th><th>Meaning</th></tr>
+<tr><td>Linear MOOP</td><td>Objective functions and constraints are linear in the decision variables.</td></tr>
+<tr><td>Nonlinear MOOP</td><td>At least one objective function or constraint is nonlinear.</td></tr>
+<tr><td>Convex MOOP</td><td>For a minimisation formulation, the objective functions are convex and the feasible region is convex (with suitable convex constraints).</td></tr>
+<tr><td>Non-convex MOOP</td><td>The feasible region or relevant objective structure is non-convex; the Pareto front may contain non-convex portions or disconnected regions.</td></tr></table>
+<div class="note">Do not confuse linear/nonlinear with convex/non-convex. These describe different properties: linearity concerns mathematical form, while convexity concerns the shape/properties of functions and feasible sets.</div>
+<h3>3. Principles of Multi-Objective Optimization</h3>
+<ul><li>Identify decision variables, objective functions and constraints.</li><li>Recognise trade-offs among conflicting objectives.</li><li>Compare candidate solutions using a dominance relation.</li><li>Retain non-dominated solutions rather than assuming one candidate is best in every objective.</li><li>Present the set of trade-off solutions to support final decision-making.</li></ul>
+<h3>4. Dominance Relations</h3>
+<p>For a minimisation problem, compare two feasible solutions A and B across all objectives.</p>
+<ul><li><b>Weak dominance:</b> A is no worse than B in every objective (all objective values are less than or equal to B's), with equality permitted.</li><li><b>Strict/Pareto dominance:</b> A is no worse than B in every objective and strictly better in at least one objective.</li><li><b>Non-dominance:</b> neither solution dominates the other; each may be better in a different objective.</li></ul>
+<div class="formula">For minimisation: A dominates B if fᵢ(A) ≤ fᵢ(B) for all i,<br>and fⱼ(A) &lt; fⱼ(B) for at least one objective j.</div>
+<p>For maximisation, reverse the inequalities. Always state whether the problem is minimisation or maximisation before comparing solutions.</p>
+<h3>5. Pareto Optimality and Pareto Front</h3>
+<ul><li>A feasible solution is <b>Pareto-optimal</b> if no other feasible solution dominates it.</li><li>The <b>Pareto-optimal set</b> is the collection of Pareto-optimal decision solutions.</li><li>The <b>Pareto front</b> is the image of that set in objective space.</li><li>Different points on the front represent different trade-offs among objectives.</li></ul>
+<div class="note"><b>Important:</b> Pareto optimality does not mean that every objective has reached its individual minimum. It means that improving one objective is not possible without worsening at least one other objective, within the feasible set.</div>
+<h3>6. Identifying a Non-Dominated Set</h3>
+<ol><li>List all feasible candidate solutions and their objective values.</li><li>Choose the optimisation direction for every objective (minimise or maximise).</li><li>Compare each candidate against the others, objective by objective.</li><li>Mark a candidate as dominated if another candidate is at least as good in every objective and strictly better in at least one (for minimisation, reverse signs for maximisation).</li><li>Remove dominated candidates. The remaining candidates form the non-dominated set among the candidates examined.</li><li>Plot their objective values to visualise the Pareto front when there are two objectives.</li></ol>
+<h3>7. Properties of a Dominance Relation</h3>
+<p>State properties with the exact dominance relation and convention being used. In the standard Pareto comparison, strict dominance is irreflexive and transitive; it is asymmetric. The corresponding weak componentwise relation is reflexive and transitive. Antisymmetry applies to the weak componentwise relation on objective vectors: if each vector is no worse than the other in every component, their objective vectors are equal.</p>
+<h3>8. Optimality Conditions in MOO</h3>
+<p>Optimality is assessed against all objectives and the feasible region, not by optimising one objective in isolation. A feasible point is Pareto-optimal when no feasible alternative improves at least one objective without worsening any other. In differentiable continuous problems, necessary conditions may be expressed using weighted combinations of objective gradients together with constraint conditions; the exact conditions depend on convexity, differentiability and constraint qualifications.</p>
+<h3>9. Neuro-Fuzzy Hybrid Systems</h3>
+<p>A neuro-fuzzy system combines neural-network learning/adaptation with fuzzy logic's linguistic rules and approximate reasoning.</p>
+<ul><li>Fuzzy logic represents knowledge using linguistic variables, membership functions and IF–THEN rules.</li><li>Neural-network learning adjusts parameters such as membership-function shapes or rule-related parameters using data.</li><li>The hybrid approach can combine interpretability of fuzzy rules with data-driven adaptation.</li></ul>
+<p><b>Common classification by learning architecture:</b></p>
+<ul><li><b>Cooperative:</b> neural network assists in developing or tuning the fuzzy system; after learning, the network may no longer be part of the final inference system.</li><li><b>Concurrent:</b> neural network and fuzzy system operate together, with the network adapting or supporting the fuzzy system during operation.</li><li><b>Integrated:</b> neural learning mechanisms are embedded in the fuzzy system architecture, forming a unified neuro-fuzzy model (for example, ANFIS-style architectures).</li></ul>
+<h3>10. Genetic-Neuro Hybrid Systems</h3>
+<p>A genetic-neuro hybrid system combines a Genetic Algorithm (GA) with a Neural Network (NN). The GA performs population-based search/optimisation, while the neural network learns patterns or models the problem.</p>
+<div class="formula">Problem / Data → Neural Network model → Fitness evaluation<br>Population of candidate network parameters / structures → Genetic Algorithm<br>Selection → Crossover → Mutation → Candidate networks → Evaluation → Best network</div>
+<ul><li>GA can optimise neural-network weights, architecture, learning parameters or feature selections.</li><li>NN can provide prediction or classification capability and evaluate candidate solutions.</li><li>The GA explores alternatives and may help avoid dependence on a single gradient-based search path.</li></ul>
+<p><b>Advantages:</b> global search capability, flexible optimisation of network parameters/structure, reduced dependence on gradient information for the GA search, and potential improvement in network performance. The method may require substantial computation.</p>
+<h3>11. Neuro-Fuzzy vs Genetic-Neuro</h3>
+<table><tr><th>Feature</th><th>Neuro-fuzzy</th><th>Genetic-neuro</th></tr>
+<tr><td>Combination</td><td>Neural learning + fuzzy reasoning</td><td>Genetic optimisation + neural network</td></tr>
+<tr><td>Main role of learning/search</td><td>Adapt fuzzy membership functions/rules or system parameters</td><td>Search for suitable network weights, structures or parameters</td></tr>
+<tr><td>Knowledge representation</td><td>Fuzzy sets and linguistic IF–THEN rules</td><td>Neural-network architecture and parameters</td></tr>
+<tr><td>Typical focus</td><td>Interpretable approximate reasoning with adaptation</td><td>Optimising neural-network performance or structure</td></tr></table>
+<div class="note"><b>Exam focus:</b> mathematical form and classification of MOOP; convex vs non-convex MOOP; weak/strict dominance and non-dominance; Pareto optimality; non-dominated set procedure; dominance properties; neuro-fuzzy classifications; genetic-neuro architecture and advantages.</div>
+</section>
+<section id="pyq" class="panel"><h2>Previous Year Questions – Module V</h2>
+<p>Questions below are based on the uploaded CST444 university question papers. The wording and marks are retained as visible in the papers.</p>
+<div class="pyq"><span class="tag">June 2023 • Part A • 3 marks</span><p><b>Q9.</b> Differentiate between linear and nonlinear Multi Objective Optimization Problem.</p></div>
+<div class="pyq"><span class="tag">October 2023 • Module V • Part B</span><p><b>Q19(a).</b> Explain convex and noncovex MOOP. How to find a non dominated set? (10)</p><p><b>Q19(b).</b> What are the properties of dominance relation? (4)</p><p><b>OR</b></p><p><b>Q20(a).</b> State the properties of Genetic Neuro Hybrid System. Draw the block diagram of Genetic Neuro Hybrid System. (5)</p><p><b>Q20(b).</b> Explain the characteristics and different classifications of a neuro-fuzzy hybrid system. (9)</p></div>
+<div class="pyq"><span class="tag">May 2024 • Module V • Part B</span><p><b>Q19(a).</b> Explain convex and non-convex Multi Objective Optimization Problem. How to find a non-dominated set? (6)</p><p><b>Q19(b).</b> Explain Genetic neuro Hybrid system in detail? (8)</p><p><b>OR</b></p><p><b>Q20(a).</b> What are the classifications of neuro-fuzzy hybrid systems? Discuss in detail. (8)</p><p><b>Q20(b).</b> What is pareto optimality. (6)</p></div>
+<div class="pyq"><span class="tag">August 2024 • Module V • Part B</span><p><b>Q19(a).</b> Explain the concepts of dominance and Pareto-optimality in the context of multi-objective optimization. How can these concepts be used to identify optimal solutions in a multi-objective optimization problem? (10)</p><p><b>Q19(b).</b> What are the properties of dominance relation? (4)</p><p><b>OR</b></p><p><b>Q20(a).</b> Illustrate the different steps in genetic-neuro hybrid systems with the help of a neat block diagram, and list out its advantages also. (10)</p><p><b>Q20(b).</b> Differentiate between Convex MOOP and nonConvex MOOP. (4)</p></div>
+<div class="pyq"><span class="tag">April 2025 • Module V • Part B</span><p><b>Q19(a).</b> What are the different types of Neuro-Fuzzy Hybrid Systems? (8)</p><p><b>Q19(b).</b> Explain the concept of weak dominance, strict dominance, and non-dominance in Pareto optimization. (6)</p><p><b>OR</b></p><p><b>Q20(a).</b> Draw and explain the block diagram of Genetic-Neuro Hybrids. (10)</p><p><b>Q20(b).</b> What are optimality conditions in Multi-Objective Optimization (MOO)? (4)</p></div>
+<div class="pyq"><span class="tag">April 2026 • Module V • Part B</span><p><b>Q19(a).</b> Discuss the characteristics of neuro-fuzzy hybrid systems and explain their classifications. (9)</p><p><b>Q19(b).</b> What do you understand by Pareto optimality? (5)</p><p><b>OR</b></p><p><b>Q20(a).</b> Present the mathematical form of MOOP and illustrate the different classes of multi-objective optimization problems. (8)</p><p><b>Q20(b).</b> Outline the steps involved in identifying non-dominated solutions in multi-objective optimization problems. (6)</p></div>
+<div class="pyq"><span class="tag">Module-wise Question Bank • Practice</span><ul>
+<li>Define MOOP and present its general mathematical formulation.</li>
+<li>Differentiate linear and nonlinear MOOP with suitable examples.</li>
+<li>Explain convex and non-convex MOOP with diagrams and examples.</li>
+<li>Explain weak dominance, strict dominance and non-dominance with examples.</li>
+<li>Explain Pareto optimality, Pareto-optimal set and Pareto front.</li>
+<li>Given a set of candidate solutions for two minimisation objectives, identify the dominated and non-dominated solutions.</li>
+<li>Explain the properties of a dominance relation, clearly distinguishing strict and weak dominance.</li>
+<li>What are the optimality conditions in multi-objective optimization?</li>
+<li>Explain the characteristics and classifications of neuro-fuzzy hybrid systems with diagrams.</li>
+<li>Draw and explain the architecture and working of a genetic-neuro hybrid system. Discuss its advantages.</li>
+<li>Compare neuro-fuzzy and genetic-neuro hybrid systems.</li>
+</ul></div>
+</section>
+<section id="quiz" class="panel"><h2>Module 5 – Self Assessment</h2><p>Answer all 15 questions and select <b>Submit Quiz</b> to view your score and explanations.</p>
+<form id="quizForm"><div id="questions"></div><button type="button" class="action" onclick="submitQuiz()">Submit Quiz</button><button type="button" class="action secondary" onclick="resetQuiz()">Try Again</button><div id="result" aria-live="polite"></div></form></section>
+</main>
+<footer><b>CST444 – Soft Computing</b><br>Department of Computer Science &amp; Engineering<br>Viswajyothi College of Engineering &amp; Technology<br><br>Designed &amp; Developed by Ms. Arsha J K</footer>
+<script>
+function showTab(id,btn){document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById(id).classList.add('active');btn.classList.add('active')}
+const qs=[
+["A problem requires minimising both cost and fuel consumption. Why can it be a multi-objective optimisation problem?","It has two objective functions that may conflict","It has two decision variables only","It must have two constraints","It has a single weighted objective by definition",0,"A MOOP optimises two or more objectives simultaneously; the objectives may conflict."],
+["For a minimisation MOOP, candidate A has objective values (3, 5) and B has (4, 5). Which statement is correct?","A strictly dominates B","B strictly dominates A","Neither dominates the other","Both strictly dominate each other",0,"A is no worse in either objective and is strictly better in the first: 3 < 4."],
+["For minimisation, A=(4, 7) and B=(3, 8). What is their relationship under Pareto dominance?","Neither dominates the other","A strictly dominates B","B strictly dominates A","They have identical objective values",0,"A is better in the second objective, while B is better in the first; neither is no worse in both."],
+["A feasible solution is Pareto-optimal when:","No feasible solution dominates it","It is the minimum of every objective separately","It has the lowest value of the first objective only","It lies outside the feasible region",0,"Pareto optimality means no feasible alternative is at least as good in every objective and better in one."],
+["The Pareto front is best described as:","The objective-space image of Pareto-optimal solutions","The set of all infeasible decision vectors","The graph of only the first objective","The initial population of a genetic algorithm",0,"The Pareto front maps Pareto-optimal decision solutions into objective space."],
+["Which statement distinguishes linear from nonlinear MOOP?","Linearity concerns the mathematical form of objectives and constraints","Linearity is determined only by the number of objectives","Every convex MOOP is nonlinear","Every nonlinear MOOP is non-convex",0,"Linear/nonlinear classification concerns whether the objective functions and constraints are linear."],
+["A convex MOOP minimisation formulation typically requires:","Convex objective functions and a convex feasible region","A disconnected feasible region","At least one permutation variable","All objectives to have identical values",0,"Convexity of the minimisation objectives and feasible region supports the convex MOOP formulation."],
+["For minimisation, candidate P=(2,6), Q=(3,7), R=(1,9). Which candidate is dominated by P?","Q only","R only","Both Q and R","Neither Q nor R",0,"P=(2,6) is no worse than Q=(3,7) in both objectives and is strictly better in both; P does not dominate R because 6 is less than 9 but 2 is greater than 1."],
+["Which statement about strict Pareto dominance is correct?","A solution must be no worse in all objectives and better in at least one","A solution must be better in exactly one objective and worse in the rest","A solution must be equal in every objective","A solution must be infeasible",0,"Strict Pareto dominance requires no-worse performance in every objective and strict improvement in at least one."],
+["Which combination is characteristic of a neuro-fuzzy hybrid system?","Neural learning with fuzzy reasoning","Genetic selection with permutation encoding only","Crossover with defuzzification only","Sorting with linear constraints only",0,"Neuro-fuzzy systems combine neural-network learning/adaptation and fuzzy logic reasoning."],
+["In a cooperative neuro-fuzzy architecture, the neural network typically:","Assists in developing or tuning the fuzzy system","Replaces every fuzzy rule with a genetic chromosome","Acts only as the final display device","Prevents membership functions from changing",0,"In cooperative systems, the neural network helps construct or tune the fuzzy system and may not remain in final inference."],
+["A genetic-neuro hybrid system combines:","Genetic algorithm optimisation and neural networks","Fuzzy sets and defuzzification only","Linear programming and sorting only","Perceptron testing and fuzzy relations only",0,"The GA searches/optimises candidate network parameters or structures, while the NN models or learns."],
+["Which is a possible target for GA optimisation in a neural network?","Network weights or architecture","Only the colour of the network diagram","The number of objective functions in the syllabus","The names of training samples",0,"A GA can search neural-network weights, architecture or other parameters."],
+["A non-dominated set obtained from a finite candidate list contains:","Candidates not dominated by another candidate in that list","Every candidate, including all dominated candidates","Only the candidate with the smallest first objective","Only infeasible candidates",0,"The non-dominated set retains candidates for which no other examined candidate dominates them."],
+["Which statement best describes the trade-off represented by Pareto-optimal solutions?","Improving one objective requires worsening at least one other objective","All objectives can always be improved simultaneously","Every Pareto solution has equal objective values","The decision variables must be integers",0,"A Pareto-optimal point cannot be improved in one objective without worsening another, within the feasible set."]
+];
+const qbox=document.getElementById('questions');
+function render(){qbox.innerHTML=qs.map((q,i)=>`<div class="question"><p>${i+1}. ${q[0]}</p>${q.slice(1,5).map((a,j)=>`<label class="option"><input type="radio" name="q${i}" value="${j}">${String.fromCharCode(65+j)}. ${a}</label>`).join('')}<div class="feedback" id="f${i}"></div></div>`).join('')}
+function submitQuiz(){let score=0,answered=0;qs.forEach((q,i)=>{const c=document.querySelector(`input[name="q${i}"]:checked`),f=document.getElementById('f'+i);if(c){answered++;if(+c.value===q[5]){score++;f.className='feedback correct';f.textContent='Correct. '+q[6]}else{f.className='feedback wrong';f.textContent='Not quite. Correct answer: '+q[q[5]+1]+'. '+q[6]}}else{f.className='feedback wrong';f.textContent='Not answered. Correct answer: '+q[q[5]+1]+'. '+q[6]}});document.getElementById('result').textContent=`Your score: ${score} / ${qs.length} (${answered} answered).`;window.scrollTo({top:document.getElementById('result').getBoundingClientRect().top+window.scrollY-100,behavior:'smooth'})}
+function resetQuiz(){document.getElementById('quizForm').reset();document.querySelectorAll('.feedback').forEach(f=>{f.textContent='';f.className='feedback'});document.getElementById('result').textContent=''}
+render();
+</script></body></html>
